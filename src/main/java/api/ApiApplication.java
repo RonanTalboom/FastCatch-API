@@ -40,6 +40,13 @@ public class ApiApplication {
         }
 
         System.out.println();
-        System.out.println(profielResource.get(1).getGebruikersnaam());
+        Profiel profiel = profielResource.get(1);
+        System.out.println(profiel.getGebruikersnaam());
+        System.out.println(profiel.getWachtwoord());
+        profiel.setWachtwoord("hetnieuwewachtwoord01");
+
+        profielResource.wijzigWachtwoord(profiel);
+        System.out.println();
+        System.out.println(profielResource.get(1).getWachtwoord());
     }
 }

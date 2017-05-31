@@ -16,6 +16,9 @@ public class ProfielDAO {
     private final static String getProfielQuery = "select * from profiel " +
             " where profiel.id = ?;";
 
+    private final static String wijzigWachtwoordQuery = "update profiel " +
+            " set wachtwoord = ? where id = ?;";
+
     public List<Profiel> profielLijst;
 
     public ProfielDAO() {
@@ -49,5 +52,13 @@ public class ProfielDAO {
         }
 
         return profiel;
+    }
+
+    public void wijzigWachtwoord(Profiel profiel) {
+        for (int i=0; i < profielLijst.size(); i++) {
+            if (profielLijst.get(i).getId() == profiel.getId()) {
+                profielLijst.get(i).setWachtwoord(profiel.getWachtwoord());
+            }
+        }
     }
 }

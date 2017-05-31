@@ -22,4 +22,8 @@ public class ProfielResource {
         Profiel profiel = profielService.getProfiel(id);
         return profiel;
     }
+
+    public void wijzigWachtwoord(Profiel profiel) {
+        profielService.wijzigWachtwoord(profiel);
+    }
 }
