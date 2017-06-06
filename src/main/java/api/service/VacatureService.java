@@ -18,4 +18,6 @@ public class VacatureService {
     public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
 
     public Vacature getVacature(int id) { return vacatureDAO.getVacature(id); }
+
+    public Vacature getMeestBekekenVacature() { return vacatureDAO.getMeestBekekenVacature(); }
 }

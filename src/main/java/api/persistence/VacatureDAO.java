@@ -61,15 +61,15 @@ public class VacatureDAO {
         //VACATURE NR 2
         vacatureLijst.add(new Vacature(1, "Docent Aardrijkskunde", 80, 20, "Leiden", "onderwijs",
                 "Hogeschool Leiden", "Dit is de korte samenvatting", "Dit is de volledige lange hele hele hele hele hahaha samenvatting",
-                1));
+                5));
         //VACATURE NR 3
         vacatureLijst.add(new Vacature(2, "Java Programmeur", 35, 48, "Amsterdam", "ict",
                 "Overheid", "Dit is de korte samenvatting", "Dit is de volledige lange hele hele hele hele hahaha samenvatting",
-                1));
+                2));
         //VACATURE NR 4
         vacatureLijst.add(new Vacature(3, "Cactuskweker", 53, 60, "Delft", "natuur",
                 "Groen inc", "Dit is de korte samenvatting", "Dit is de volledige lange hele hele hele hele hahaha samenvatting",
-                1));
+                4));
         /*}
             } catch (Exception e) {
                 e.printStackTrace();
@@ -123,7 +123,7 @@ public class VacatureDAO {
         return vacature;
     }
 
-    /*public Vacature getMeestBekekenVacature() {
+    public Vacature getMeestBekekenVacature() {
         Vacature vacature = new Vacature();
 
         /*Connection conn = null;
@@ -146,10 +146,21 @@ public class VacatureDAO {
                 vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
                 vacature.setAantalBekeken(rs.getInt("aantalBekeken"));*/
 
-//        for (int i=0; i < vacatureLijst.size(); i++){
-//            if (vacatureLijst.get(i).getId() == id) {
-//                vacature = vacatureLijst.get(i);
-//            }
-//        }
-    //}*/
+        Vacature meestBekeken = vacatureLijst.get(0);
+        for (int i=1; i < vacatureLijst.size(); i++){
+            if (vacatureLijst.get(i).getAantalBekeken() > meestBekeken.getAantalBekeken()) {
+                meestBekeken = vacatureLijst.get(i);
+            }
+        }
+        vacature = meestBekeken;
+        /*  }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(rs);
+            DbUtils.closeQuietly(stmt);
+            DbUtils.closeQuietly(conn);
+        }*/
+        return vacature;
+    }
 }

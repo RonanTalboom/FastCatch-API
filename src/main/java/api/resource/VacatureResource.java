@@ -30,9 +30,17 @@ public class VacatureResource {
     //@GET
     //@Path("/id/{id}")
     //@RolesAllowed({"ADM", "BEH"})
-    //@JsonVIew(View.Public.class)
+    //@JsonView(View.Public.class)
     public Vacature get(/*@PathParam("id")*/ int id) {
         Vacature vacature = vacatureService.getVacature(id);
+        return vacature;
+    }
+
+    //@GET
+    //@RolesAllowed({"ADM"})
+    //@JsonView(View.Public.class_
+    public Vacature getMeestBekeken() {
+        Vacature vacature = vacatureService.getMeestBekekenVacature();
         return vacature;
     }
 }

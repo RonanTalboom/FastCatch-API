@@ -36,6 +36,10 @@ public class ApiApplication {
         System.out.println(vacatureResource.get(3).getTitel());
 
         System.out.println();
+        //Print de titel van de meest bekeken vacature
+        System.out.println(vacatureResource.getMeestBekeken().getTitel());
+
+        System.out.println();
 
         //Haal de lijst met alle profielen op en print de gebruikersnamen
         List<Profiel> profielen = (List)profielResource.retrieveAll();
