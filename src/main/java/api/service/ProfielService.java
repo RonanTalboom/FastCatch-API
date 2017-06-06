@@ -8,6 +8,7 @@ import java.util.Collection;
 /**
  * Created by Anna on 31-5-2017.
  */
+//@Singleton
 public class ProfielService {
     private final ProfielDAO profielDAO;
 

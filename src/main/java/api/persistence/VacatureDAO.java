@@ -93,23 +93,29 @@ public class VacatureDAO {
 
             if (rs.next()) {
                 vacature.setId(rs.getInt("id"));
-                profiel.setGebruikersnaam(rs.getString("gebruikersnaam"));
-                profiel.setWachtwoord(rs.getString("wachtwoord"));
-                profiel.setVoornaam(rs.getString("voornaam"));
-                profiel.setTussenvoegsel(rs.getString("tussenvoegsel"));
-                profiel.setAchternaam(rs.getString("achternaam"));
-                profiel.setGebruikerSoort(rs.getString("gebruikerSoort"));
-                profiel.setEmailAdres(rs.getString("emailAdres"));
-                profiel.setCv(rs.getString("cv"));
-                profiel.setTelefoonnummer(rs.getString("telefoonnummer"));
-                profiel.setWoonplaats(rs.getString("woonplaats"));*/
+                vacature.setTitel(rs.getString("titel"));
+                vacature.setAantalUur(rs.getDouble("aantalUur"));
+                vacature.setUurloon(rs.getDouble("uurloon"));
+                vacature.setPlaats(rs.getString("plaats"));
+                vacature.setBranche(rs.getString("branche"));
+                vacature.setOrganisatie(rs.getString("organisatie"));
+                vacature.setKorteSamenvatting(rs.getString("korteSamenvatting"));
+                vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
+                vacature.setAantalBekeken(rs.getInt("aantalBekeken"));*/
 
         for (int i=0; i < vacatureLijst.size(); i++){
             if (vacatureLijst.get(i).getId() == id) {
                 vacature = vacatureLijst.get(i);
             }
         }
-
+        /*  }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(rs);
+            DbUtils.closeQuietly(stmt);
+            DbUtils.closeQuietly(conn);
+        }*/
         return vacature;
     }
 }

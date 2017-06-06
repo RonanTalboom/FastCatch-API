@@ -8,6 +8,7 @@ import java.util.Collection;
 /**
  * Created by Anna on 30-5-2017.
  */
+//@Singleton
 public class VacatureService {
     private final VacatureDAO vacatureDAO;
 

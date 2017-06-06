@@ -27,7 +27,11 @@ public class VacatureResource {
         return vacatures;
     }
 
-    public Vacature get(int id) {
+    //@GET
+    //@Path("/id/{id}")
+    //@RolesAllowed({"ADM", "BEH"})
+    //@JsonVIew(View.Public.class)
+    public Vacature get(/*@PathParam("id")*/ int id) {
         Vacature vacature = vacatureService.getVacature(id);
         return vacature;
     }
