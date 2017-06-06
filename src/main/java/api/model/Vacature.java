@@ -5,24 +5,44 @@ package api.model;
  */
 public class Vacature {
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private int id;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String titel;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private double aantalUur;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private double uurloon;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String plaats;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String branche;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String organisatie;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String korteSamenvatting;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String volledigeSamenvatting;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private int aantalBekeken;
 
     public Vacature(int id, String titel, double aantalUur, double uurloon, String plaats,

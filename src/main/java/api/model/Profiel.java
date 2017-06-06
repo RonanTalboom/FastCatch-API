@@ -9,31 +9,58 @@ import java.util.ArrayList;
  */
 public class Profiel {
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private int id;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String gebruikersnaam;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String wachtwoord;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String voornaam;
 
     @Nullable
+    //@JsonView(View.Public.class)
     private String tussenvoegsel;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String achternaam;
 
+    //todo kan dit leeg zijn?
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private ArrayList<String> branches;
 
+    //todo kan dit leeg zijn?
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private ArrayList<String> expertises;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String gebruikerSoort;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String emailAdres;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String cv;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String telefoonnummer;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
     private String woonplaats;
 
     public Profiel(int id, String gebruikersnaam, String wachtwoord, String voornaam, @Nullable String tussenvoegsel,
@@ -56,6 +83,17 @@ public class Profiel {
 
     public Profiel() {
 
+    }
+
+    //@Override
+    //@JsonIgnore
+    public String getName() {
+        if (tussenvoegsel != null) {
+            return voornaam + " " + tussenvoegsel + " "
+                    + achternaam;
+        } else {
+            return voornaam + " " + achternaam;
+        }
     }
 
     public int getId() { return id; }
