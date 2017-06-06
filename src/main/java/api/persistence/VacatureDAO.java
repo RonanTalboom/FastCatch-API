@@ -15,8 +15,12 @@ public class VacatureDAO {
 
     private final static String getVacaturesQuery = "select * from vacature;";
 
-    private final static String getVacatureDoorId = "select * from vacature " +
+    private final static String getVacatureDoorIdQuery = "select * from vacature " +
             " where vacature.id = ?;";
+
+    private final static String getMeestBekekenVacatureQuery = "select * from vacature a " +
+            " INNER JOIN ( select id, MAX(aantalBekeken) aantalBekeken from vacature b " +
+            " group by id ) ON a.id = b.id AND a.aantalBekeken = b.aantalBekeken;";
 
     public List<Vacature> vacatureLijst;
 
@@ -85,7 +89,7 @@ public class VacatureDAO {
         ResultSet rs = null;
         try {
             conn = DatabaseConnector.getConnection();
-            stmt = conn.prepareStatement(getVacatureQuery);
+            stmt = conn.prepareStatement(getVacatureDoorIdQuery);
 
             stmt.setInt(1, id);
             stmt.executeQuery();
@@ -118,4 +122,34 @@ public class VacatureDAO {
         }*/
         return vacature;
     }
+
+    /*public Vacature getMeestBekekenVacature() {
+        Vacature vacature = new Vacature();
+
+        /*Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = DatabaseConnector.getConnection();
+            stmt = conn.prepareStatement(getMeestBekekenVacature);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                vacature.setId(rs.getInt("id"));
+                vacature.setTitel(rs.getString("titel"));
+                vacature.setAantalUur(rs.getDouble("aantalUur"));
+                vacature.setUurloon(rs.getDouble("uurloon"));
+                vacature.setPlaats(rs.getString("plaats"));
+                vacature.setBranche(rs.getString("branche"));
+                vacature.setOrganisatie(rs.getString("organisatie"));
+                vacature.setKorteSamenvatting(rs.getString("korteSamenvatting"));
+                vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
+                vacature.setAantalBekeken(rs.getInt("aantalBekeken"));*/
+
+//        for (int i=0; i < vacatureLijst.size(); i++){
+//            if (vacatureLijst.get(i).getId() == id) {
+//                vacature = vacatureLijst.get(i);
+//            }
+//        }
+    //}*/
 }
