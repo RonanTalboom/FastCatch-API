@@ -19,5 +19,5 @@ public class VacatureService {
 
     public Vacature getVacature(int id) { return vacatureDAO.getVacature(id); }
 
-    public Vacature getMeestBekekenVacature() { return vacatureDAO.getMeestBekekenVacature(); }
+    //public Vacature getMeestBekekenVacature() { return vacatureDAO.getMeestBekekenVacature(); }
 }

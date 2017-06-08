@@ -39,8 +39,8 @@ public class VacatureResource {
     //@GET
     //@RolesAllowed({"ADM"})
     //@JsonView(View.Public.class_
-    public Vacature getMeestBekeken() {
+    /*public Vacature getMeestBekeken() {
         Vacature vacature = vacatureService.getMeestBekekenVacature();
         return vacature;
-    }
+    }*/
 }

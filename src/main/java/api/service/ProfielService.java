@@ -17,7 +17,7 @@ public class ProfielService {
 
     public Collection<Profiel> getProfielen() { return profielDAO.getProfielen(); }
 
-    public Profiel getProfiel(int id) { return profielDAO.getProfiel(id); }
+    public Profiel getProfiel(String emailAdres) { return profielDAO.getProfiel(emailAdres); }
 
     public void wijzigWachtwoord(Profiel profiel) { profielDAO.wijzigWachtwoord(profiel); }
 }

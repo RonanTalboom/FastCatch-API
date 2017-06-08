@@ -28,16 +28,16 @@ public class ApiApplication {
         //Haal de lijst met alle vacatures op en print de titels
         List<Vacature> vacatures = (List)vacatureResource.retrieveAll();
         for (int i = 0; i < vacatures.size(); i++) {
-            System.out.println(vacatures.get(i).getTitel());
+            System.out.println(vacatures.get(i).getOmschrijving());
         }
 
         System.out.println();
         //Print de titel van de vacature met id 3
-        System.out.println(vacatureResource.get(3).getTitel());
+        System.out.println(vacatureResource.get(3).getOmschrijving());
 
-        System.out.println();
+        //System.out.println();
         //Print de titel van de meest bekeken vacature
-        System.out.println(vacatureResource.getMeestBekeken().getTitel());
+        //System.out.println(vacatureResource.getMeestBekeken().getTitel());
 
         System.out.println();
 
@@ -49,7 +49,7 @@ public class ApiApplication {
 
         System.out.println();
         //Haal het profiel met id 1 op en print de gebruikersnaam en het wachtwoord
-        Profiel profiel = profielResource.get(1);
+        Profiel profiel = profielResource.get("test@mail.nl");
         System.out.println(profiel.getGebruikersnaam());
         System.out.println(profiel.getWachtwoord());
         //Verander het wachtwoord van het profiel
@@ -58,6 +58,6 @@ public class ApiApplication {
         //Wijzig het wachtwoord in de lijst en print het wachtwoord
         profielResource.wijzigWachtwoord(profiel);
         System.out.println();
-        System.out.println(profielResource.get(1).getWachtwoord());
+        System.out.println(profielResource.get("test@mail.nl").getWachtwoord());
     }
 }

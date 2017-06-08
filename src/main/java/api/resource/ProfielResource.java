@@ -29,8 +29,8 @@ public class ProfielResource {
     //@Path("/id/{id}")
     //@RolesAllowed({"ADM", "BEH"})
     //@JsonView(View.Public.class)
-    public Profiel get(/*@PathParam("id")*/ int id) {
-        Profiel profiel = profielService.getProfiel(id);
+    public Profiel get(/*@PathParam("id")*/ String emailAdres) {
+        Profiel profiel = profielService.getProfiel(emailAdres);
         return profiel;
     }
 
