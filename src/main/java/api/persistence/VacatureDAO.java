@@ -45,15 +45,6 @@ public class VacatureDAO {
             while (rs.next()) {
                 Vacature vacature = new Vacature();
 
-                this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
-                this.sluitDatum = sluitDatum;
-                this.uurPerWeek = uurPerWeek;
-                this.aantalVacatures = aantalVacatures;
-                this.aanvrager = aanvrager;
-                this.omschrijving = omschrijving;
-                this.samenvatting = samenvatting;
-                //this.aantalBekeken = aantalBekeken;
-
                 vacature.setId(rs.getInt("id"));
                 vacature.setBrancheType(rs.getString("BranchebrancheType"));
                 vacature.setWerkNiveau(rs.getString("werkNiveau"));
@@ -63,10 +54,14 @@ public class VacatureDAO {
                 vacature.setStartdatum(rs.getString("startdatum"));
                 vacature.setEinddatum(rs.getString("einddatum"));
                 vacature.setPublicatiedatum(rs.getString("publicatiedatum"));
-                vacature.setUitersteAanbiedingsdatum(rs.getString("uiterste"));
-                vacature.setEinddatum(rs.getString("einddatum"));
-                vacature.setPublicatiedatum(rs.getString("publicatiedatum"));
-                vacature.setAantalBekeken(rs.getInt("aantalBekeken"));
+                vacature.setUitersteAanbiedingsdatum(rs.getString("uitersteAanbiedingsdatum"));
+                vacature.setSluitDatum(rs.getString("sluitDatum"));
+                vacature.setUurPerWeek(rs.getInt("uurPerWeek"));
+                vacature.setAantalVacatures(rs.getInt("aantalVacatures"));
+                vacature.setAanvrager(rs.getString("aanvrager"));
+                vacature.setOmschrijving(rs.getString("omschrijving"));
+                vacature.setSamenvatting(rs.getString("samenvatting"));
+                //vacature.setAantalBekeken(rs.getInt("aantalBekeken"));
 
                 vacatureLijst.add(vacature);
         /*VACATURE NR 1
@@ -99,7 +94,7 @@ public class VacatureDAO {
     public Vacature getVacature(int id) {
         Vacature vacature = new Vacature();
 
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -112,33 +107,40 @@ public class VacatureDAO {
 
             if (rs.next()) {
                 vacature.setId(rs.getInt("id"));
-                vacature.setTitel(rs.getString("titel"));
-                vacature.setAantalUur(rs.getDouble("aantalUur"));
-                vacature.setUurloon(rs.getDouble("uurloon"));
-                vacature.setPlaats(rs.getString("plaats"));
-                vacature.setBranche(rs.getString("branche"));
-                vacature.setOrganisatie(rs.getString("organisatie"));
-                vacature.setKorteSamenvatting(rs.getString("korteSamenvatting"));
-                vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
-                vacature.setAantalBekeken(rs.getInt("aantalBekeken"));*/
+                vacature.setBrancheType(rs.getString("BranchebrancheType"));
+                vacature.setWerkNiveau(rs.getString("werkNiveau"));
+                vacature.setEigenaar(rs.getString("eigenaar"));
+                vacature.setKlant(rs.getString("klant"));
+                vacature.setLocatie(rs.getString("locatie"));
+                vacature.setStartdatum(rs.getString("startdatum"));
+                vacature.setEinddatum(rs.getString("einddatum"));
+                vacature.setPublicatiedatum(rs.getString("publicatiedatum"));
+                vacature.setUitersteAanbiedingsdatum(rs.getString("uitersteAanbiedingsdatum"));
+                vacature.setSluitDatum(rs.getString("sluitDatum"));
+                vacature.setUurPerWeek(rs.getInt("uurPerWeek"));
+                vacature.setAantalVacatures(rs.getInt("aantalVacatures"));
+                vacature.setAanvrager(rs.getString("aanvrager"));
+                vacature.setOmschrijving(rs.getString("omschrijving"));
+                vacature.setSamenvatting(rs.getString("samenvatting"));
+                //vacature.setAantalBekeken(rs.getInt("aantalBekeken"));
 
-        for (int i=0; i < vacatureLijst.size(); i++){
+        /*for (int i=0; i < vacatureLijst.size(); i++){
             if (vacatureLijst.get(i).getId() == id) {
                 vacature = vacatureLijst.get(i);
             }
-        }
-        /*  }
+        }*/
+          }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             DbUtils.closeQuietly(rs);
             DbUtils.closeQuietly(stmt);
             DbUtils.closeQuietly(conn);
-        }*/
+        }
         return vacature;
     }
 
-    public Vacature getMeestBekekenVacature() {
+    /*public Vacature getMeestBekekenVacature() {
         Vacature vacature = new Vacature();
 
         /*Connection conn = null;
@@ -161,13 +163,13 @@ public class VacatureDAO {
                 vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
                 vacature.setAantalBekeken(rs.getInt("aantalBekeken"));*/
 
-        Vacature meestBekeken = vacatureLijst.get(0);
+        /*Vacature meestBekeken = vacatureLijst.get(0);
         for (int i=1; i < vacatureLijst.size(); i++){
             if (vacatureLijst.get(i).getAantalBekeken() > meestBekeken.getAantalBekeken()) {
                 meestBekeken = vacatureLijst.get(i);
             }
         }
-        vacature = meestBekeken;
+        vacature = meestBekeken;*/
         /*  }
         } catch (Exception e) {
             e.printStackTrace();
@@ -176,6 +178,6 @@ public class VacatureDAO {
             DbUtils.closeQuietly(stmt);
             DbUtils.closeQuietly(conn);
         }*/
-        return vacature;
-    }
+        //return vacature;
+    //}
 }
