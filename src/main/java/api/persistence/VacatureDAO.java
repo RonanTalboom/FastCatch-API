@@ -1,10 +1,15 @@
 package api.persistence;
 
 import api.model.Vacature;
+import api.util.DatabaseConnector;
+import org.apache.commons.dbutils.DbUtils;
 
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,20 +23,18 @@ public class VacatureDAO {
     private final static String getVacatureDoorIdQuery = "select * from vacature " +
             " where vacature.id = ?;";
 
-    private final static String getMeestBekekenVacatureQuery = "select * from vacature a " +
+    /*private final static String getMeestBekekenVacatureQuery = "select * from vacature a " +
             " INNER JOIN ( select id, MAX(aantalBekeken) aantalBekeken from vacature b " +
-            " group by id ) ON a.id = b.id AND a.aantalBekeken = b.aantalBekeken;";
-
-    public List<Vacature> vacatureLijst;
+            " group by id ) ON a.id = b.id AND a.aantalBekeken = b.aantalBekeken;";*/
 
     public VacatureDAO() {
 
     }
 
     public List<Vacature> getVacatures() {
-        vacatureLijst = new ArrayList<>();
+        List<Vacature> vacatureLijst = new ArrayList<>();
 
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -42,19 +45,31 @@ public class VacatureDAO {
             while (rs.next()) {
                 Vacature vacature = new Vacature();
 
+                this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
+                this.sluitDatum = sluitDatum;
+                this.uurPerWeek = uurPerWeek;
+                this.aantalVacatures = aantalVacatures;
+                this.aanvrager = aanvrager;
+                this.omschrijving = omschrijving;
+                this.samenvatting = samenvatting;
+                //this.aantalBekeken = aantalBekeken;
+
                 vacature.setId(rs.getInt("id"));
-                vacature.setTitel(rs.getString("titel"));
-                vacature.setAantalUur(rs.getDouble("aantalUur"));
-                vacature.setUurloon(rs.getDouble("uurloon"));
-                vacature.setPlaats(rs.getString("plaats"));
-                vacature.setBranche(rs.getString("branche"));
-                vacature.setOrganisatie(rs.getString("organisatie"));
-                vacature.setKorteSamenvatting(rs.getString("korteSamenvatting"));
-                vacature.setVolledigeSamenvatting(rs.getString("volledigeSamenvatting"));
+                vacature.setBrancheType(rs.getString("BranchebrancheType"));
+                vacature.setWerkNiveau(rs.getString("werkNiveau"));
+                vacature.setEigenaar(rs.getString("eigenaar"));
+                vacature.setKlant(rs.getString("klant"));
+                vacature.setLocatie(rs.getString("locatie"));
+                vacature.setStartdatum(rs.getString("startdatum"));
+                vacature.setEinddatum(rs.getString("einddatum"));
+                vacature.setPublicatiedatum(rs.getString("publicatiedatum"));
+                vacature.setUitersteAanbiedingsdatum(rs.getString("uiterste"));
+                vacature.setEinddatum(rs.getString("einddatum"));
+                vacature.setPublicatiedatum(rs.getString("publicatiedatum"));
                 vacature.setAantalBekeken(rs.getInt("aantalBekeken"));
 
-                vacatureLijst.add(vacature);*/
-        //VACATURE NR 1
+                vacatureLijst.add(vacature);
+        /*VACATURE NR 1
         vacatureLijst.add(new Vacature(0, "Test Specialist level 3", 40, 50, "Heerlen", "ict",
                 "McDonalds", "Dit is de korte samenvatting", "Dit is de volledige lange hele hele hele hele hahaha samenvatting",
                 1));
@@ -69,15 +84,15 @@ public class VacatureDAO {
         //VACATURE NR 4
         vacatureLijst.add(new Vacature(3, "Cactuskweker", 53, 60, "Delft", "natuur",
                 "Groen inc", "Dit is de korte samenvatting", "Dit is de volledige lange hele hele hele hele hahaha samenvatting",
-                4));
-        /*}
+                4));*/
+        }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 DbUtils.closeQuietly(rs);
                 DbUtils.closeQuietly(stmt);
                 DbUtils.closeQuietly(conn);
-            }*/
+            }
         return vacatureLijst;
     }
 

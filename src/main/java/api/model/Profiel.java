@@ -11,15 +11,11 @@ public class Profiel {
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private int id;
+    private String emailAdres;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String gebruikersnaam;
-
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String wachtwoord;
+    private String geslacht;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
@@ -33,6 +29,26 @@ public class Profiel {
     //@JsonView(View.Public.class)
     private String achternaam;
 
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String soortGebruiker;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String telefoonnummer;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String cv;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String gebruikersnaam;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String wachtwoord;
+
     //todo kan dit leeg zijn?
     //@NotEmpty
     //@JsonView(View.Public.class)
@@ -43,42 +59,21 @@ public class Profiel {
     //@JsonView(View.Public.class)
     private ArrayList<String> expertises;
 
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String gebruikerSoort;
-
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String emailAdres;
-
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String cv;
-
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String telefoonnummer;
-
-    //@NotEmpty
-    //@JsonView(View.Public.class)
-    private String woonplaats;
-
-    public Profiel(int id, String gebruikersnaam, String wachtwoord, String voornaam, @Nullable String tussenvoegsel,
-                   String achternaam, ArrayList<String> branches, ArrayList<String> expertises, String gebruikerSoort,
-                   String emailAdres, String cv, String telefoonnummer, String woonplaats) {
-        this.id = id;
-        this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
+    public Profiel(String emailAdres, String geslacht, String voornaam, @Nullable String tussenvoegsel,
+                   String achternaam, String soortGebruiker, String telefoonnummer, String cv,
+                   String gebruikersnaam, String wachtwoord, ArrayList<String> branches, ArrayList<String> expertises) {
+        this.emailAdres = emailAdres;
+        this.geslacht = geslacht;
         this.voornaam = voornaam;
         this.tussenvoegsel = tussenvoegsel;
         this.achternaam = achternaam;
+        this.soortGebruiker = soortGebruiker;
+        this.telefoonnummer = telefoonnummer;
+        this.cv = cv;
+        this.gebruikersnaam = gebruikersnaam;
+        this.wachtwoord = wachtwoord;
         this.branches = branches;
         this.expertises = expertises;
-        this.gebruikerSoort = gebruikerSoort;
-        this.emailAdres = emailAdres;
-        this.cv = cv;
-        this.telefoonnummer = telefoonnummer;
-        this.woonplaats = woonplaats;
     }
 
     public Profiel() {
@@ -96,14 +91,11 @@ public class Profiel {
         }
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public String getEmailAdres() { return emailAdres; }
+    public void setEmailAdres(String emailAdres) { this.emailAdres = emailAdres; }
 
-    public String getGebruikersnaam() { return gebruikersnaam; }
-    public void setGebruikersnaam(String gebruikersnaam) { this.gebruikersnaam = gebruikersnaam; }
-
-    public String getWachtwoord() { return wachtwoord; }
-    public void setWachtwoord(String wachtwoord) { this.wachtwoord = wachtwoord; }
+    public String getGeslacht() { return geslacht; }
+    public void setGeslacht(String geslacht) { this.geslacht = geslacht; }
 
     public String getVoornaam() { return voornaam; }
     public void setVoornaam(String voornaam) { this.voornaam = voornaam; }
@@ -115,24 +107,24 @@ public class Profiel {
     public String getAchternaam() { return achternaam; }
     public void setAchternaam(String achternaam) { this.achternaam = achternaam; }
 
+    public String getSoortGebruiker() { return soortGebruiker; }
+    public void setSoortGebruiker(String soortGebruiker) { this.soortGebruiker = soortGebruiker; }
+
+    public String getTelefoonnummer() { return telefoonnummer; }
+    public void setTelefoonnummer(String telefoonnummer) { this.telefoonnummer = telefoonnummer; }
+
+    public String getCv() { return cv; }
+    public void setCv(String cv) { this.cv = cv; }
+
+    public String getGebruikersnaam() { return gebruikersnaam; }
+    public void setGebruikersnaam(String gebruikersnaam) { this.gebruikersnaam = gebruikersnaam; }
+
+    public String getWachtwoord() { return wachtwoord; }
+    public void setWachtwoord(String wachtwoord) { this.wachtwoord = wachtwoord; }
+
     public ArrayList<String> getBranches() { return branches; }
     public void setBranches(ArrayList<String> branches) { this.branches = branches; }
 
     public ArrayList<String> getExpertises() { return expertises; }
     public void setExpertises(ArrayList<String> expertises) { this.expertises = expertises; }
-
-    public String getGebruikerSoort() { return gebruikerSoort; }
-    public void setGebruikerSoort(String gebruikerSoort) { this.gebruikerSoort = gebruikerSoort; }
-
-    public String getEmailAdres() { return emailAdres; }
-    public void setEmailAdres(String emailAdres) { this.emailAdres = emailAdres; }
-
-    public String getCv() { return cv; }
-    public void setCv(String cv) { this.cv = cv; }
-
-    public String getTelefoonnummer() { return telefoonnummer; }
-    public void setTelefoonnummer(String telefoonnummer) { this.telefoonnummer = telefoonnummer; }
-
-    public String getWoonplaats() { return woonplaats; }
-    public void setWoonplaats(String woonplaats) { this.woonplaats = woonplaats; }
 }

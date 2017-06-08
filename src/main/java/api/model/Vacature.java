@@ -11,53 +11,89 @@ public class Vacature {
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String titel;
+    private String brancheType;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private double aantalUur;
+    private String werkNiveau;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private double uurloon;
+    private String eigenaar;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String plaats;
+    private String klant;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String branche;
+    private String locatie;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String organisatie;
+    private String startdatum;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String korteSamenvatting;
+    private String einddatum;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private String volledigeSamenvatting;
+    private String publicatiedatum;
 
     //@NotEmpty
     //@JsonView(View.Public.class)
-    private int aantalBekeken;
+    private String uitersteAanbiedingsdatum;
 
-    public Vacature(int id, String titel, double aantalUur, double uurloon, String plaats,
-                    String branche, String organisatie, String korteSamenvatting,
-                    String volledigeSamenvatting, int aantalBekeken) {
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String sluitDatum;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private int uurPerWeek;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private int aantalVacatures;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String aanvrager;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String omschrijving;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    private String samenvatting;
+
+    //@NotEmpty
+    //@JsonView(View.Public.class)
+    //private int aantalBekeken;
+
+    public Vacature(int id, String brancheType, String werkNiveau, String eigenaar, String klant,
+                    String locatie, String startdatum, String einddatum,
+                    String publicatiedatum, String uitersteAanbiedingsdatum, String sluitDatum, int uurPerWeek,
+                    int aantalVacatures, String aanvrager, String omschrijving, String samenvatting/*, int aantalBekeken*/) {
         this.id = id;
-        this.titel = titel;
-        this.aantalUur = aantalUur;
-        this.uurloon = uurloon;
-        this.plaats = plaats;
-        this.branche = branche;
-        this.organisatie = organisatie;
-        this.korteSamenvatting = korteSamenvatting;
-        this.volledigeSamenvatting = volledigeSamenvatting;
-        this.aantalBekeken = aantalBekeken;
+        this.brancheType = brancheType;
+        this.werkNiveau = werkNiveau;
+        this.eigenaar = eigenaar;
+        this.klant = klant;
+        this.locatie = locatie;
+        this.startdatum = startdatum;
+        this.einddatum = einddatum;
+        this.publicatiedatum = publicatiedatum;
+        this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
+        this.sluitDatum = sluitDatum;
+        this.uurPerWeek = uurPerWeek;
+        this.aantalVacatures = aantalVacatures;
+        this.aanvrager = aanvrager;
+        this.omschrijving = omschrijving;
+        this.samenvatting = samenvatting;
+        //this.aantalBekeken = aantalBekeken;
     }
 
     public Vacature() {
@@ -67,30 +103,51 @@ public class Vacature {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public String getTitel() { return titel; }
-    public void setTitel(String titel) { this.titel = titel; }
+    public String getBrancheType() { return brancheType; }
+    public void setBrancheType(String brancheType) { this.brancheType = brancheType; }
 
-    public double getAantalUur() { return aantalUur; }
-    public void setAantalUur(double aantalUur) { this.aantalUur = aantalUur; }
+    public String getWerkNiveau() { return werkNiveau; }
+    public void setWerkNiveau(String werkNiveau) { this.werkNiveau = werkNiveau; }
 
-    public double getUurloon() { return uurloon; }
-    public void setUurloon(double uurloon) { this.uurloon = uurloon; }
+    public String getEigenaar() { return eigenaar; }
+    public void setEigenaar(String eigenaar) { this.eigenaar = eigenaar; }
 
-    public String getPlaats() { return plaats; }
-    public void setPlaats(String plaats) { this.plaats = plaats; }
+    public String getKlant() { return klant; }
+    public void setKlant(String klant) { this.klant = klant; }
 
-    public String getBranche() { return branche; }
-    public void setBranche(String branche) { this.branche = branche; }
+    public String getLocatie() { return locatie; }
+    public void setLocatie(String locatie) { this.locatie = locatie; }
 
-    public String getOrganisatie() { return organisatie; }
-    public void setOrganisatie(String organisatie) { this.organisatie = organisatie; }
+    public String getStartdatum() { return startdatum; }
+    public void setStartdatum(String startdatum) { this.startdatum = startdatum; }
 
-    public String getKorteSamenvatting() { return korteSamenvatting; }
-    public void setKorteSamenvatting(String korteSamenvatting) { this.korteSamenvatting = korteSamenvatting; }
+    public String getEinddatum() { return einddatum; }
+    public void setEinddatum(String einddatum) { this.einddatum = einddatum; }
 
-    public String getVolledigeSamenvatting() { return volledigeSamenvatting; }
-    public void setVolledigeSamenvatting(String volledigeSamenvatting) { this.volledigeSamenvatting = volledigeSamenvatting; }
+    public String getPublicatiedatum() { return publicatiedatum; }
+    public void setPublicatiedatum(String publicatiedatum) { this.publicatiedatum = publicatiedatum; }
 
-    public int getAantalBekeken() { return aantalBekeken; }
-    public void setAantalBekeken(int aantalBekeken) { this.aantalBekeken = aantalBekeken; }
+    public String getUitersteAanbiedingsdatum() { return uitersteAanbiedingsdatum; }
+    public void setUitersteAanbiedingsdatum(String uitersteAanbiedingsdatum) { this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum; }
+
+    public String getSluitDatum() { return sluitDatum; }
+    public void setSluitDatum(String sluitDatum) { this.sluitDatum = sluitDatum; }
+
+    public int getUurPerWeek() { return uurPerWeek; }
+    public void setUurPerWeek(int uurPerWeek) { this.uurPerWeek = uurPerWeek; }
+
+    public int getAantalVacatures() { return aantalVacatures; }
+    public void setAantalVacatures(int aantalVacatures) { this.aantalVacatures = aantalVacatures; }
+
+    public String getAanvrager() { return aanvrager; }
+    public void setAanvrager(String aanvrager) { this.aanvrager = aanvrager; }
+
+    public String getOmschrijving() { return omschrijving; }
+    public void setOmschrijving(String omschrijving) { this.omschrijving = omschrijving; }
+
+    public String getSamenvatting() { return samenvatting; }
+    public void setSamenvatting(String samenvatting) { this.samenvatting = samenvatting; }
+
+    /*public int getAantalBekeken() { return aantalBekeken; }
+    public void setAantalBekeken(int aantalBekeken) { this.aantalBekeken = aantalBekeken; }*/
 }

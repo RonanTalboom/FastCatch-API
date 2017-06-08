@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.zaxxer:HikariCP:2.5.1" level="project" />
+    <orderEntry type="library" name="commons-dbutils:commons-dbutils:1.6" level="project" />
   </component>
 </module>
