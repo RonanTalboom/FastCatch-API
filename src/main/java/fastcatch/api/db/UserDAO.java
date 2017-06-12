@@ -12,7 +12,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 @RegisterMapper(UserMapper.class)
 public interface UserDAO {
 
-    @SqlUpdate("create table something (id int primary key, name varchar(100))")
+    @SqlUpdate("create table IF NOT EXISTS something (id int primary key, name varchar(100))")
     void createSomethingTable();
 
     @SqlUpdate("insert into something (id, name) values (:id, :name)")

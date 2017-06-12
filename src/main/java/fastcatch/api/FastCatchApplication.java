@@ -32,6 +32,7 @@ public class FastCatchApplication extends Application<FastCatchConfiguration> {
         try {
             jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
             final UserDAO dao = jdbi.onDemand(UserDAO.class);
+            dao.createSomethingTable();
             environment.jersey().register(new UserResource(dao));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
