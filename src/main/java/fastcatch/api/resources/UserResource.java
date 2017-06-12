@@ -4,9 +4,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import fastcatch.api.db.UserDAO;
-
+import fastcatch.api.core.User;
+//Dit is een voorbeeld.
 @Path("/user")
-@Produces(MediaType.APPLICATION_JSON) 
+@Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
     private final UserDAO userDAO;
 
@@ -15,9 +16,9 @@ public class UserResource {
     }
 
     @GET
-    @Path("/{email}")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String getUserByEmail(@PathParam("email") int email) {
-        return userDAO.findNameById(email);
+    public User getUserByEmail(@PathParam("id") int id) {
+        return userDAO.findNameById(id);
     }
 }
