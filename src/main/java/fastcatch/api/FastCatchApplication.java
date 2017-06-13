@@ -4,14 +4,9 @@ import fastcatch.api.auth.FastCatchAuthenticator;
 import fastcatch.api.auth.FastCatchAuthorizer;
 import fastcatch.api.auth.FastCatchUnauthorized;
 import fastcatch.api.core.Account;
-import fastcatch.api.db.AccountDAO;
-import fastcatch.api.db.GebruikerDAO;
-import fastcatch.api.db.UserDAO;
-import fastcatch.api.db.VacatureDAO;
+import fastcatch.api.db.*;
 import fastcatch.api.health.TemplateHealthCheck;
-import fastcatch.api.resources.GebruikerResource;
-import fastcatch.api.resources.UserResource;
-import fastcatch.api.resources.VacatureResource;
+import fastcatch.api.resources.*;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
@@ -83,10 +78,13 @@ public class FastCatchApplication extends Application<FastCatchConfiguration> {
         final UserDAO udao = jdbi.onDemand(UserDAO.class);
         final GebruikerDAO gdao = jdbi.onDemand(GebruikerDAO.class);
         final VacatureDAO vdao = jdbi.onDemand(VacatureDAO.class);
-
+        final ExpertiseDAO edao = jdbi.onDemand(ExpertiseDAO.class);
+        final BrancheDAO bdao = jdbi.onDemand(BrancheDAO.class);
         environment.jersey().register(new UserResource(udao));
         environment.jersey().register(new GebruikerResource(gdao));
         environment.jersey().register(new VacatureResource(vdao));
+        environment.jersey().register(new ExpertiseResource(edao));
+        environment.jersey().register(new BrancheResource(bdao));
     }
 
 
