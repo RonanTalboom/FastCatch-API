@@ -15,19 +15,22 @@ import java.util.List;
 @RegisterMapper(VacatureMapper.class)
 public interface VacatureDAO {
 
-    @SqlQuery("select * from vacature")
+    @SqlQuery("select * from vacature where actief = 1")
     List<Vacature> getVacatures();
 
-    @SqlQuery("select * from vacature where id = :id")
+    @SqlQuery("select * from vacature where id = :id and actief = 1")
     Vacature getVacature(@Bind("id") int id);
 
-    @SqlUpdate("insert into vacature (BranchebrancheType, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
-            "uitersteAanbiedingsdatum, sluitDatum, uurPerWeek, aantalVacatures, aanvrager, omschrijving, samenvatting)" +
-            "values (:BranchebrancheType, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
-            ":uitersteAanbiedingsdatum, :sluitDatum, :uurPerWeek, :aantalVacatures, :aanvrager, :omschrijving, :samenvatting)")
-    void insert(@Bind("BranchebrancheType") String BranchebrancheType, @Bind("werkNiveau") String werkNiveau, @Bind("eigenaar") String eigenaar,
+    @SqlUpdate("insert into vacature (BranchebrancheType, titel, rol, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
+            "uitersteAanbiedingsdatum, sluitDatum, uurPerWeek, aanvrager, omschrijving, samenvatting, actief)" +
+            "values (:BranchebrancheType, :titel, :rol, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
+            ":uitersteAanbiedingsdatum, :sluitDatum, :uurPerWeek, :aanvrager, :omschrijving, :samenvatting, :actief)")
+    void insert(@Bind("BranchebrancheType") String BranchebrancheType, @Bind("titel") String titel, @Bind("rol") String rol, @Bind("werkNiveau") String werkNiveau, @Bind("eigenaar") String eigenaar,
                 @Bind("klant") String klant, @Bind("locatie") String locatie, @Bind("startdatum") String startdatum, @Bind("einddatum") String einddatum,
                 @Bind("publicatiedatum") String publicatiedatum, @Bind("uitersteAanbiedingsdatum") String uitersteAanbiedingsdatum, @Bind("sluitDatum") String sluitDatum,
-                @Bind("uurPerWeek") int uurPerWeek, @Bind("aantalVacatures") int aantalVacatures, @Bind("aanvrager") String aanvrager, @Bind("omschrijving") String omschrijving,
-                @Bind("samenvatting") String samenvatting);
+                @Bind("uurPerWeek") int uurPerWeek, @Bind("aanvrager") String aanvrager, @Bind("omschrijving") String omschrijving,
+                @Bind("samenvatting") String samenvatting, @Bind("actief") int actief);
+
+    @SqlUpdate("update vacature set actief = 0 where id = :id")
+    void delete(@Bind("id") int id);
 }

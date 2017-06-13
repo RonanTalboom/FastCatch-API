@@ -27,4 +27,18 @@ public class VacatureResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Vacature getVacature(@PathParam("id") int id) { return vacatureDAO.getVacature(id); }
 
+    @POST
+    @RolesAllowed("ADMIN")
+    public void insert(Vacature vacature) {
+        vacatureDAO.insert(vacature.getBrancheType(), vacature.getTitel(), vacature.getRol(), vacature.getWerkNiveau(), vacature.getEigenaar(), vacature.getKlant(),
+                vacature.getLocatie(), vacature.getStartdatum(), vacature.getEinddatum(), vacature.getPublicatiedatum(),
+                vacature.getUitersteAanbiedingsdatum(), vacature.getSluitDatum(), vacature.getUurPerWeek(),
+                vacature.getAanvrager(), vacature.getOmschrijving(), vacature.getSamenvatting(), vacature.getActief());
+    }
+
+    @PUT
+    @Path("/{id}/archief")
+    @RolesAllowed("ADMIN")
+    public void delete(@PathParam("id") int id) { vacatureDAO.delete(id); }
+
 }

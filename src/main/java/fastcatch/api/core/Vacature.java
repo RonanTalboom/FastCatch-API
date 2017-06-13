@@ -7,6 +7,8 @@ public class Vacature {
 
     private int id;
     private String brancheType;
+    private String titel;
+    private String rol;
     private String werkNiveau;
     private String eigenaar;
     private String klant;
@@ -17,18 +19,20 @@ public class Vacature {
     private String uitersteAanbiedingsdatum;
     private String sluitDatum;
     private int uurPerWeek;
-    private int aantalVacatures;
     private String aanvrager;
     private String omschrijving;
     private String samenvatting;
+    private int actief;
     //private int aantalBekeken;
 
-    public Vacature(int id, String brancheType, String werkNiveau, String eigenaar, String klant,
+    public Vacature(int id, String brancheType, String titel, String rol, String werkNiveau, String eigenaar, String klant,
                     String locatie, String startdatum, String einddatum,
                     String publicatiedatum, String uitersteAanbiedingsdatum, String sluitDatum, int uurPerWeek,
-                    int aantalVacatures, String aanvrager, String omschrijving, String samenvatting/*, int aantalBekeken*/) {
+                    String aanvrager, String omschrijving, String samenvatting, int actief/*, int aantalBekeken*/) {
         this.id = id;
         this.brancheType = brancheType;
+        this.titel = titel;
+        this.rol = rol;
         this.werkNiveau = werkNiveau;
         this.eigenaar = eigenaar;
         this.klant = klant;
@@ -39,11 +43,11 @@ public class Vacature {
         this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
         this.sluitDatum = sluitDatum;
         this.uurPerWeek = uurPerWeek;
-        this.aantalVacatures = aantalVacatures;
         this.aanvrager = aanvrager;
         this.omschrijving = omschrijving;
         this.samenvatting = samenvatting;
         //this.aantalBekeken = aantalBekeken;
+        this.actief = actief;
     }
 
     public Vacature() {
@@ -55,6 +59,12 @@ public class Vacature {
 
     public String getBrancheType() { return brancheType; }
     public void setBrancheType(String brancheType) { this.brancheType = brancheType; }
+
+    public String getTitel() { return titel; }
+    public void setTitel(String titel) { this.titel = titel; }
+
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
 
     public String getWerkNiveau() { return werkNiveau; }
     public void setWerkNiveau(String werkNiveau) { this.werkNiveau = werkNiveau; }
@@ -86,9 +96,6 @@ public class Vacature {
     public int getUurPerWeek() { return uurPerWeek; }
     public void setUurPerWeek(int uurPerWeek) { this.uurPerWeek = uurPerWeek; }
 
-    public int getAantalVacatures() { return aantalVacatures; }
-    public void setAantalVacatures(int aantalVacatures) { this.aantalVacatures = aantalVacatures; }
-
     public String getAanvrager() { return aanvrager; }
     public void setAanvrager(String aanvrager) { this.aanvrager = aanvrager; }
 
@@ -100,4 +107,7 @@ public class Vacature {
 
     /*public int getAantalBekeken() { return aantalBekeken; }
     public void setAantalBekeken(int aantalBekeken) { this.aantalBekeken = aantalBekeken; }*/
+
+    public int getActief() { return actief; }
+    public void setActief(int actief) { this.actief = actief; }
 }
