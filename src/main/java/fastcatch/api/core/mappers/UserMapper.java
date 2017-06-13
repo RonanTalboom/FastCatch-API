@@ -1,5 +1,6 @@
 package fastcatch.api.core.mappers;
 
+import fastcatch.api.core.Account;
 import fastcatch.api.core.User;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;

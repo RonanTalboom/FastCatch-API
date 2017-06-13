@@ -1,10 +1,12 @@
 package fastcatch.api.resources;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import fastcatch.api.db.UserDAO;
 import fastcatch.api.core.User;
+import fastcatch.api.db.UserDAO;
+import fastcatch.api.core.Account;
 //Dit is een voorbeeld.
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
@@ -17,6 +19,7 @@ public class UserResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed("GEBRUIKER")
     @Consumes(MediaType.APPLICATION_JSON)
     public User getUserByEmail(@PathParam("id") int id) {
         return userDAO.findNameById(id);

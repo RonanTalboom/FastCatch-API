@@ -2,7 +2,7 @@ template: Hello, %s!
 defaultName: Stranger
 
 database:
-  # the name of your JDBC driver
+  # the email of your JDBC driver
   driverClass: com.mysql.cj.jdbc.Driver
 
   # the username

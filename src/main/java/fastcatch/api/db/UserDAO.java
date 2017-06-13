@@ -1,6 +1,7 @@
 package fastcatch.api.db;
 
 
+import fastcatch.api.core.Account;
 import fastcatch.api.core.User;
 import fastcatch.api.core.mappers.UserMapper;
 import org.skife.jdbi.v2.sqlobject.Bind;

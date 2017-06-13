@@ -6,9 +6,8 @@ import java.util.ArrayList;
 /**
  * Created by Anna on 12-6-2017.
  */
-public class Profiel {
-
-    private String emailAdres;
+public class Gebruiker {
+    private int gebruikerID;
     private String geslacht;
     private String voornaam;
     @Nullable
@@ -18,14 +17,12 @@ public class Profiel {
     private String telefoonnummer;
     private String cv;
     private String gebruikersnaam;
-    private String wachtwoord;
     //private ArrayList<String> branches;
     //private ArrayList<String> expertises;
 
-    public Profiel(String emailAdres, String geslacht, String voornaam, @Nullable String tussenvoegsel,
-                   String achternaam, String soortGebruiker, String telefoonnummer, String cv,
-                   String gebruikersnaam, String wachtwoord/*, ArrayList<String> branches, ArrayList<String> expertises*/) {
-        this.emailAdres = emailAdres;
+
+    public Gebruiker(int gebruikerID, String geslacht, String voornaam, String tussenvoegsel, String achternaam, String soortGebruiker, String telefoonnummer, String cv, String gebruikersnaam) {
+        this.gebruikerID = gebruikerID;
         this.geslacht = geslacht;
         this.voornaam = voornaam;
         this.tussenvoegsel = tussenvoegsel;
@@ -34,12 +31,9 @@ public class Profiel {
         this.telefoonnummer = telefoonnummer;
         this.cv = cv;
         this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
-        //this.branches = branches;
-        //this.expertises = expertises;
     }
 
-    public Profiel() {
+    public Gebruiker() {
 
     }
 
@@ -52,8 +46,13 @@ public class Profiel {
         }
     }
 
-    public String getEmailAdres() { return emailAdres; }
-    public void setEmailAdres(String emailAdres) { this.emailAdres = emailAdres; }
+    public int getGebruikerID() {
+        return gebruikerID;
+    }
+
+    public void setGebruikerID(int gebruikerID) {
+        this.gebruikerID = gebruikerID;
+    }
 
     public String getGeslacht() { return geslacht; }
     public void setGeslacht(String geslacht) { this.geslacht = geslacht; }
@@ -80,8 +79,7 @@ public class Profiel {
     public String getGebruikersnaam() { return gebruikersnaam; }
     public void setGebruikersnaam(String gebruikersnaam) { this.gebruikersnaam = gebruikersnaam; }
 
-    public String getWachtwoord() { return wachtwoord; }
-    public void setWachtwoord(String wachtwoord) { this.wachtwoord = wachtwoord; }
+
 
     /*public ArrayList<String> getBranches() { return branches; }
     public void setBranches(ArrayList<String> branches) { this.branches = branches; }
