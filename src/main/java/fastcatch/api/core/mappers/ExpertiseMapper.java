@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Anna on 12-6-2017.
+ * Created by ronantalboom on 12-6-2017.
  */
 public class ExpertiseMapper implements ResultSetMapper<Expertise> {
 

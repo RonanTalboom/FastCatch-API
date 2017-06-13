@@ -1,5 +1,6 @@
 package fastcatch.api.resources;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import fastcatch.api.core.Expertise;
 import fastcatch.api.core.Gebruiker;
 import fastcatch.api.db.ExpertiseDAO;
@@ -25,14 +26,20 @@ public class ExpertiseResource {
     @RolesAllowed("GEBRUIKER")
     public Collection<Expertise> getExpertises() { return expertiseDAO.getExpertises(); }
 
-//    @GET
-//    @Path("/{id}")
-//    @RolesAllowed("ADMIN")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Gebruiker getProfiel(@PathParam("id") int id) { return expertiseDAO.getExpertise(); }
 
-//    @PUT
-//    @Path("/{profiel}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public void wijzigWachtwoord(Gebruiker gebruiker) { gebruikerDAO.wijzigWachtwoord(gebruiker.getWachtwoord(), gebruiker.getEmailAdres());}
+    @POST
+    @RolesAllowed("GEBRUIKER")
+    @Path("/gebruiker/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertExpertiseGebruiker(@PathParam("id") int id, Expertise expertise) {
+        expertiseDAO.insertExpertiseGebruiker(expertise.getExpertiseType(), id );
+    }
+    @POST
+    @RolesAllowed("GEBRUIKER")
+    @Path("/vacature/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertExpertiseVacature(@PathParam("id") int id, Expertise expertise) {
+        expertiseDAO.insertExpertiseVacature(expertise.getExpertiseType(), id );
+    }
+
 }
