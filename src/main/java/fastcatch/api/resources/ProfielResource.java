@@ -15,18 +15,26 @@ import java.util.Collection;
 public class ProfielResource {
     private final ProfielDAO profielDAO;
 
-    public ProfielResource(ProfielDAO dao) { this.profielDAO = dao; }
+    public ProfielResource(ProfielDAO dao) {
+        this.profielDAO = dao;
+    }
 
     @GET
-    public Collection<Profiel> getProfielen() { return profielDAO.getProfielen(); }
+    public Collection<Profiel> getProfielen() {
+        return profielDAO.getProfielen();
+    }
 
     @GET
     @Path("/{emailAdres}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Profiel getProfiel(@PathParam("emailAdres") String emailAdres) { return profielDAO.getProfiel(emailAdres); }
+    public Profiel getProfiel(@PathParam("emailAdres") String emailAdres) {
+        return profielDAO.getProfiel(emailAdres);
+    }
 
     @PUT
     @Path("/{profiel}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void wijzigWachtwoord(Profiel profiel) { profielDAO.wijzigWachtwoord(profiel.getWachtwoord(), profiel.getEmailAdres());}
+    public void wijzigWachtwoord(Profiel profiel) {
+        profielDAO.wijzigWachtwoord(profiel.getWachtwoord(), profiel.getEmailAdres());
+    }
 }
