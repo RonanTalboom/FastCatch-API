@@ -17,7 +17,6 @@ public class Vacature {
     private String einddatum;
     private String publicatiedatum;
     private String uitersteAanbiedingsdatum;
-    private String sluitDatum;
     private int uurPerWeek;
     private String aanvrager;
     private String omschrijving;
@@ -27,7 +26,7 @@ public class Vacature {
 
     public Vacature(int id, String brancheType, String titel, String rol, String werkNiveau, String eigenaar, String klant,
                     String locatie, String startdatum, String einddatum,
-                    String publicatiedatum, String uitersteAanbiedingsdatum, String sluitDatum, int uurPerWeek,
+                    String publicatiedatum, String uitersteAanbiedingsdatum, int uurPerWeek,
                     String aanvrager, String omschrijving, String samenvatting, int actief/*, int aantalBekeken*/) {
         this.id = id;
         this.brancheType = brancheType;
@@ -41,7 +40,6 @@ public class Vacature {
         this.einddatum = einddatum;
         this.publicatiedatum = publicatiedatum;
         this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
-        this.sluitDatum = sluitDatum;
         this.uurPerWeek = uurPerWeek;
         this.aanvrager = aanvrager;
         this.omschrijving = omschrijving;
@@ -89,9 +87,6 @@ public class Vacature {
 
     public String getUitersteAanbiedingsdatum() { return uitersteAanbiedingsdatum; }
     public void setUitersteAanbiedingsdatum(String uitersteAanbiedingsdatum) { this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum; }
-
-    public String getSluitDatum() { return sluitDatum; }
-    public void setSluitDatum(String sluitDatum) { this.sluitDatum = sluitDatum; }
 
     public int getUurPerWeek() { return uurPerWeek; }
     public void setUurPerWeek(int uurPerWeek) { this.uurPerWeek = uurPerWeek; }

@@ -22,12 +22,12 @@ public interface VacatureDAO {
     Vacature getVacature(@Bind("id") int id);
 
     @SqlUpdate("insert into vacature (BranchebrancheType, titel, rol, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
-            "uitersteAanbiedingsdatum, sluitDatum, uurPerWeek, aanvrager, omschrijving, samenvatting, actief)" +
+            "uitersteAanbiedingsdatum, uurPerWeek, aanvrager, omschrijving, samenvatting, actief)" +
             "values (:BranchebrancheType, :titel, :rol, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
-            ":uitersteAanbiedingsdatum, :sluitDatum, :uurPerWeek, :aanvrager, :omschrijving, :samenvatting, :actief)")
+            ":uitersteAanbiedingsdatum, :uurPerWeek, :aanvrager, :omschrijving, :samenvatting, :actief)")
     void insert(@Bind("BranchebrancheType") String BranchebrancheType, @Bind("titel") String titel, @Bind("rol") String rol, @Bind("werkNiveau") String werkNiveau, @Bind("eigenaar") String eigenaar,
                 @Bind("klant") String klant, @Bind("locatie") String locatie, @Bind("startdatum") String startdatum, @Bind("einddatum") String einddatum,
-                @Bind("publicatiedatum") String publicatiedatum, @Bind("uitersteAanbiedingsdatum") String uitersteAanbiedingsdatum, @Bind("sluitDatum") String sluitDatum,
+                @Bind("publicatiedatum") String publicatiedatum, @Bind("uitersteAanbiedingsdatum") String uitersteAanbiedingsdatum,
                 @Bind("uurPerWeek") int uurPerWeek, @Bind("aanvrager") String aanvrager, @Bind("omschrijving") String omschrijving,
                 @Bind("samenvatting") String samenvatting, @Bind("actief") int actief);
 
