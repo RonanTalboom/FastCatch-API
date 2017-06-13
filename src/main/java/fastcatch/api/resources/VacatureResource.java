@@ -15,13 +15,19 @@ import java.util.Collection;
 public class VacatureResource {
     private final VacatureDAO vacatureDAO;
 
-    public VacatureResource(VacatureDAO dao) { this.vacatureDAO = dao; }
+    public VacatureResource(VacatureDAO dao) {
+        this.vacatureDAO = dao;
+    }
 
     @GET
-    public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
+    public Collection<Vacature> getVacatures() {
+        return vacatureDAO.getVacatures();
+    }
 
     @GET
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Vacature getVacature(@PathParam("id") int id) { return vacatureDAO.getVacature(id); }
+    public Vacature getVacature(@PathParam("id") int id) {
+        return vacatureDAO.getVacature(id);
+    }
 }
