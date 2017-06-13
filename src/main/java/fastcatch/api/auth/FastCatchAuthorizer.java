@@ -33,12 +33,12 @@ public class FastCatchAuthorizer implements Authorizer<Account> {
         ArrayList<String> roles = new ArrayList<String>();
 
         if(gebruiker.getSoortGebruiker().equals("ADMIN")){
-            //is een beheerder
+            //is een admin
             roles.add("ADMIN");
             roles.add("GEBRUIKER");
 
         }else if(gebruiker.getSoortGebruiker().equals("GEBRUIKER")) {
-            //is een admin
+            //is een gebruiker
             roles.add("GEBRUIKER");
 
         }
