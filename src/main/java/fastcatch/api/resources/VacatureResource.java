@@ -3,6 +3,7 @@ package fastcatch.api.resources;
 import fastcatch.api.core.Vacature;
 import fastcatch.api.db.VacatureDAO;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
@@ -18,6 +19,7 @@ public class VacatureResource {
     public VacatureResource(VacatureDAO dao) { this.vacatureDAO = dao; }
 
     @GET
+    @RolesAllowed("GEBRUIKER")
     public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
 
     @GET
