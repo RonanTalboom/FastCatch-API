@@ -13,7 +13,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 public interface AccountDAO {
 
 
-    @SqlQuery("select * from account where emailAdres = :emailAdres AND wachtwoord = wachtwoord")
+    @SqlQuery("select * from account where emailAdres = :emailAdres AND wachtwoord = :wachtwoord")
     Account getAccount( @Bind("emailAdres") String emailAdres, @Bind("wachtwoord") String wachtwoord);
 
 
