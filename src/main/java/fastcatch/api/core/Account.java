@@ -11,19 +11,17 @@ public class Account implements Principal {
     private int id;
     private String email;
     private String Wachtwoord;
-    private final Set<String> roles;
+
 
 
     public Account(int id, String email, String wachtwoord) {
         this.id = id;
         this.email = email;
         this.Wachtwoord = wachtwoord;
-        this.roles = null;
     }
 
-    public Account(String email, Set<String> roles) {
-        this.email = email;
-        this.roles = roles;
+    public Account() {
+
     }
 
     public String getName() {
@@ -34,9 +32,7 @@ public class Account implements Principal {
         this.email = email;
     }
 
-    public Set<String> getRoles() {
-        return roles;
-    }
+
 
     public String getEmail() {
         return email;

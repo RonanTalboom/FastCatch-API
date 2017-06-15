@@ -80,11 +80,14 @@ public class FastCatchApplication extends Application<FastCatchConfiguration> {
         final VacatureDAO vdao = jdbi.onDemand(VacatureDAO.class);
         final ExpertiseDAO edao = jdbi.onDemand(ExpertiseDAO.class);
         final BrancheDAO bdao = jdbi.onDemand(BrancheDAO.class);
+        final AccountDAO adao = jdbi.onDemand(AccountDAO.class);
+
         environment.jersey().register(new UserResource(udao));
         environment.jersey().register(new GebruikerResource(gdao));
         environment.jersey().register(new VacatureResource(vdao));
         environment.jersey().register(new ExpertiseResource(edao));
         environment.jersey().register(new BrancheResource(bdao));
+        environment.jersey().register(new AccountResource(adao));
     }
 
 
