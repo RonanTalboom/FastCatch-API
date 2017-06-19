@@ -7,9 +7,7 @@ package fastcatch.api.auth;
 
 import fastcatch.api.core.Account;
 import fastcatch.api.core.Gebruiker;
-import fastcatch.api.db.AccountDAO;
 import fastcatch.api.db.GebruikerDAO;
-import fastcatch.api.db.UserDAO;
 import io.dropwizard.auth.Authorizer;
 
 import javax.inject.Inject;
@@ -20,10 +18,12 @@ import java.util.ArrayList;
 public class FastCatchAuthorizer implements Authorizer<Account> {
 
     private final GebruikerDAO gebruikerDAO;
+
     @Inject
-    public FastCatchAuthorizer(GebruikerDAO gbDAO){
+    public FastCatchAuthorizer(GebruikerDAO gbDAO) {
         this.gebruikerDAO = gbDAO;
     }
+
     @Override
     public boolean authorize(Account account, String roleName) {
 
@@ -32,12 +32,12 @@ public class FastCatchAuthorizer implements Authorizer<Account> {
 
         ArrayList<String> roles = new ArrayList<String>();
 
-        if(gebruiker.getSoortGebruiker().equals("ADMIN")){
+        if (gebruiker.getSoortGebruiker().equals("ADMIN")) {
             //is een admin
             roles.add("ADMIN");
             roles.add("GEBRUIKER");
 
-        }else if(gebruiker.getSoortGebruiker().equals("GEBRUIKER")) {
+        } else if (gebruiker.getSoortGebruiker().equals("GEBRUIKER")) {
             //is een gebruiker
             roles.add("GEBRUIKER");
 
