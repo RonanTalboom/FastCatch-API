@@ -30,11 +30,9 @@ public class VacatureResource {
 
     @POST
     @RolesAllowed("ADMIN")
+    @Consumes(MediaType.APPLICATION_JSON)
     public void insert(Vacature vacature) {
-        vacatureDAO.insert(vacature.getBrancheType(), vacature.getTitel(), vacature.getRol(), vacature.getWerkNiveau(), vacature.getEigenaar(), vacature.getKlant(),
-                vacature.getLocatie(), vacature.getStartdatum(), vacature.getEinddatum(), vacature.getPublicatiedatum(),
-                vacature.getUitersteAanbiedingsdatum(), vacature.getUurPerWeek(),
-                vacature.getAanvrager(), vacature.getOmschrijving(), vacature.getSamenvatting(), vacature.getActief());
+        vacatureDAO.insert(vacature);
     }
 
     @PUT

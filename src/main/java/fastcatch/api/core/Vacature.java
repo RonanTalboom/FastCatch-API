@@ -1,9 +1,11 @@
 package fastcatch.api.core;
 
+import java.io.Serializable;
+
 /**
  * Created by Anna on 12-6-2017.
  */
-public class Vacature {
+public class Vacature implements Serializable {
 
     private int id;
     private String brancheType;
@@ -22,12 +24,11 @@ public class Vacature {
     private String omschrijving;
     private String samenvatting;
     private int actief;
-    //private int aantalBekeken;
 
     public Vacature(int id, String brancheType, String titel, String rol, String werkNiveau, String eigenaar, String klant,
                     String locatie, String startdatum, String einddatum,
                     String publicatiedatum, String uitersteAanbiedingsdatum, int uurPerWeek,
-                    String aanvrager, String omschrijving, String samenvatting, int actief/*, int aantalBekeken*/) {
+                    String aanvrager, String omschrijving, String samenvatting, int actief) {
         this.id = id;
         this.brancheType = brancheType;
         this.titel = titel;
@@ -44,7 +45,6 @@ public class Vacature {
         this.aanvrager = aanvrager;
         this.omschrijving = omschrijving;
         this.samenvatting = samenvatting;
-        //this.aantalBekeken = aantalBekeken;
         this.actief = actief;
     }
 
@@ -99,9 +99,6 @@ public class Vacature {
 
     public String getSamenvatting() { return samenvatting; }
     public void setSamenvatting(String samenvatting) { this.samenvatting = samenvatting; }
-
-    /*public int getAantalBekeken() { return aantalBekeken; }
-    public void setAantalBekeken(int aantalBekeken) { this.aantalBekeken = aantalBekeken; }*/
 
     public int getActief() { return actief; }
     public void setActief(int actief) { this.actief = actief; }
