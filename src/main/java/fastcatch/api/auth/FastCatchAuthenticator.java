@@ -11,7 +11,6 @@ import fastcatch.api.db.AccountDAO;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
-import jdk.nashorn.internal.ir.annotations.Immutable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -27,7 +26,7 @@ public class FastCatchAuthenticator implements Authenticator<BasicCredentials, A
     private final AccountDAO accountDAO;
 
     @Inject
-    public FastCatchAuthenticator(AccountDAO accD){
+    public FastCatchAuthenticator(AccountDAO accD) {
         this.accountDAO = accD;
     }
 
@@ -40,9 +39,14 @@ public class FastCatchAuthenticator implements Authenticator<BasicCredentials, A
     @Override
     public Optional<Account> authenticate(BasicCredentials credentials) throws AuthenticationException {
 
-        Account ac = accountDAO.getAccount(credentials.getUsername(), credentials.getPassword());
-        if(ac != null)
-            return Optional.of(ac);
+        Account account = accountDAO.getAccount(credentials.getUsername(), credentials.getPassword());
+        if (account != null) {
+
+            Optional<Account> optional = Optional.of(account);
+            return optional;
+
+        }
+
 
         return Optional.empty();
     }
