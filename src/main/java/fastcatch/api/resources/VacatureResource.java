@@ -35,7 +35,7 @@ public class VacatureResource {
         vacatureDAO.insert(vacature);
     }
 
-    @PUT
+    @DELETE
     @Path("/{id}/archief")
     @RolesAllowed("ADMIN")
     public void delete(@PathParam("id") int id) { vacatureDAO.delete(id); }
