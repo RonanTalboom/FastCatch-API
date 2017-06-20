@@ -19,4 +19,6 @@ public class VacatureMapper implements ResultSetMapper<Vacature> {
                 r.getString("einddatum"), r.getString("publicatiedatum"), r.getString("uitersteAanbiedingsdatum"),
                 r.getInt("uurPerWeek"), r.getString("aanvrager"), r.getString("omschrijving"), r.getString("samenvatting"), r.getInt("actief"));
     }
+
+
 }

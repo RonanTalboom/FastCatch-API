@@ -6,10 +6,7 @@ import fastcatch.api.auth.FastCatchUnauthorized;
 import fastcatch.api.core.Account;
 import fastcatch.api.db.*;
 import fastcatch.api.health.TemplateHealthCheck;
-import fastcatch.api.resources.BrancheResource;
-import fastcatch.api.resources.ExpertiseResource;
-import fastcatch.api.resources.GebruikerResource;
-import fastcatch.api.resources.VacatureResource;
+import fastcatch.api.resources.*;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
@@ -108,10 +105,12 @@ public class FastCatchApplication extends Application<FastCatchConfiguration> {
         final VacatureDAO vdao = jdbi.onDemand(VacatureDAO.class);
         final ExpertiseDAO edao = jdbi.onDemand(ExpertiseDAO.class);
         final BrancheDAO bdao = jdbi.onDemand(BrancheDAO.class);
+        final AccountDAO adao = jdbi.onDemand(AccountDAO.class);
         environment.jersey().register(new GebruikerResource(gdao));
         environment.jersey().register(new VacatureResource(vdao));
         environment.jersey().register(new ExpertiseResource(edao));
         environment.jersey().register(new BrancheResource(bdao));
+        environment.jersey().register(new AccountResource(adao));
     }
 
 
