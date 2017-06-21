@@ -6,8 +6,6 @@ import javax.ws.rs.core.MediaType;
 
 import fastcatch.api.core.User;
 import fastcatch.api.db.UserDAO;
-import fastcatch.api.core.Account;
-//Dit is een voorbeeld.
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
