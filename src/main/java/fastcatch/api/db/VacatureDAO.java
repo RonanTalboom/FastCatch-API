@@ -19,6 +19,12 @@ public interface VacatureDAO {
     @SqlQuery("select * from vacature where actief = 1")
     List<Vacature> getVacatures();
 
+    @SqlQuery("select vacature.* from vacature " +
+            "INNER JOIN gebruiker_branche ON vacature.BranchebrancheType = gebruiker_branche.BranchebrancheType " +
+            "WHERE actief = 1 AND gebruiker_branche.gebruikerID = :gebruikerID " +
+            "order by vacature.id")
+    List<Vacature> getVacaturesVoorGebruiker(@Bind("gebruikerID") int gebruikerID);
+
     @SqlQuery("select * from vacature where id = :id and actief = 1")
     Vacature getVacature(@Bind("id") int id);
 

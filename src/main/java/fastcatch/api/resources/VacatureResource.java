@@ -23,6 +23,12 @@ public class VacatureResource {
     public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
 
     @GET
+    @Path("/gebruiker/{id}")
+    @RolesAllowed("GEBRUIKER")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Collection<Vacature> getVacaturesVoorGebruiker(@PathParam("id") int id){ return vacatureDAO.getVacaturesVoorGebruiker(id); }
+
+    @GET
     @Path("/{id}")
     @RolesAllowed({"GEBRUIKER","ADMIN"})
     @Consumes(MediaType.APPLICATION_JSON)
