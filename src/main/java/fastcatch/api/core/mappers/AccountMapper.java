@@ -14,6 +14,6 @@ public class AccountMapper implements ResultSetMapper<Account> {
 
     public Account map(int index, ResultSet r, StatementContext ctx) throws SQLException
     {
-        return new Account(r.getInt("gebruikerID"),r.getString("emailAdres"), r.getString("wachtwoord"));
+        return new Account(r.getInt("gebruikerID"),r.getString("emailAdres"), r.getString("wachtwoord"), r.getInt("actief"));
     }
 }

@@ -9,10 +9,7 @@ import fastcatch.api.db.AccountDAO;
 import io.dropwizard.auth.Auth;
 
 import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -29,4 +26,9 @@ public class AccountResource {
     @RolesAllowed("GEBRUIKER")
     @Consumes(MediaType.APPLICATION_JSON)
     public Account getAccount(@Auth Account account) { return accountDAO.getAccount(account.getEmail(),account.getWachtwoord()); }
+
+    @DELETE
+    @RolesAllowed("ADMIN")
+    @Path("/{id}/archief")
+    public void delete(@PathParam("id") int id) { accountDAO.delete(id); }
 }
