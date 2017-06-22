@@ -19,7 +19,7 @@ public class VacatureResource {
     public VacatureResource(VacatureDAO dao) { this.vacatureDAO = dao; }
 
     @GET
-    @RolesAllowed({"GEBRUIKER","ADMIN"})
+    @RolesAllowed("ADMIN")
     public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
 
     @GET
@@ -30,7 +30,7 @@ public class VacatureResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"GEBRUIKER","ADMIN"})
+    @RolesAllowed("ADMIN")
     @Consumes(MediaType.APPLICATION_JSON)
     public Vacature getVacature(@PathParam("id") int id) { return vacatureDAO.getVacature(id); }
 
