@@ -8,10 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Anna on 12-6-2017.
+ * Deze klasse mapt alle info die uit de vacature database gehaald wordt naar een nieuw vacature object.
+ *
+ * @author Anna
  */
 public class VacatureMapper implements ResultSetMapper<Vacature> {
 
+    /**
+     * Mapt het meegegeven resultaat naar een nieuw vacature object en
+     * returnt deze vacature.
+     * @param index, r, ctx
+     * @return Vacature
+     * @throws SQLException
+     */
     public Vacature map(int index, ResultSet r, StatementContext ctx) throws SQLException
     {
         return new Vacature(r.getInt("id"), r.getString("BranchebrancheType"), r.getString("titel"), r.getString("rol"), r.getString("werkNiveau"),

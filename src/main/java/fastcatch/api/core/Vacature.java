@@ -3,7 +3,9 @@ package fastcatch.api.core;
 import java.io.Serializable;
 
 /**
- * Created by Anna on 12-6-2017.
+ * In deze klasse worden alle gegevens opgeslagen van een vacature.
+ *
+ * @author Anna
  */
 public class Vacature implements Serializable {
 
