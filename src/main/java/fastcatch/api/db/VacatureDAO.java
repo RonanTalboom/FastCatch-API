@@ -33,9 +33,11 @@ public interface VacatureDAO {
      * @return vacaturelijst
      */
     @SqlQuery("select vacature.* from vacature " +
-            "INNER JOIN gebruiker_branche ON vacature.BranchebrancheType = gebruiker_branche.BranchebrancheType " +
-            "WHERE actief = 1 AND gebruiker_branche.gebruikerID = :gebruikerID " +
-            "order by vacature.id")
+            "INNER JOIN gebruiker_branche g ON vacature.BranchebrancheType = g.BranchebrancheType " +
+            "INNER JOIN gebruiker_expertise ON g.gebruikerID = gebruiker_expertise.gebruikerID " +
+            "INNER JOIN expertise_vacature ON vacature.id = expertise_vacature.Vacatureid " +
+            "WHERE g.gebruikerID = :gebruikerID and gebruiker_expertise.ExpertiseexpertiseType = expertise_vacature.ExpertiseexpertiseType " +
+            "and actief = 1")
     List<Vacature> getVacaturesVoorGebruiker(@Bind("gebruikerID") int gebruikerID);
 
     /**

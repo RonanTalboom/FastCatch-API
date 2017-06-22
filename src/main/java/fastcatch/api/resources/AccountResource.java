@@ -27,8 +27,8 @@ public class AccountResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Account getAccount(@Auth Account account) { return accountDAO.getAccount(account.getEmail(),account.getWachtwoord()); }
 
-    @DELETE
+    /*@DELETE
     @RolesAllowed("ADMIN")
     @Path("/{id}/archief")
-    public void delete(@PathParam("id") int id) { accountDAO.delete(id); }
+    public void delete(@PathParam("id") int id) { accountDAO.delete(id); }*/
 }

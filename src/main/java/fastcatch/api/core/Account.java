@@ -11,15 +11,13 @@ public class Account implements Principal {
     private int id;
     private String email;
     private String Wachtwoord;
-    private int actief;
     private final Set<String> roles;
 
 
-    public Account(int id, String email, String wachtwoord, int actief) {
+    public Account(int id, String email, String wachtwoord) {
         this.id = id;
         this.email = email;
         this.Wachtwoord = wachtwoord;
-        this.actief = actief;
         this.roles = null;
     }
 
@@ -58,14 +56,6 @@ public class Account implements Principal {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getActief() {
-        return actief;
-    }
-
-    public void setActief(int actief) {
-        this.actief = actief;
     }
 }
 
