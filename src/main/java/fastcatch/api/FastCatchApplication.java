@@ -4,6 +4,7 @@ import fastcatch.api.auth.FastCatchAuthenticator;
 import fastcatch.api.auth.FastCatchAuthorizer;
 import fastcatch.api.auth.FastCatchUnauthorized;
 import fastcatch.api.core.Account;
+import fastcatch.api.core.Vacature;
 import fastcatch.api.db.*;
 import fastcatch.api.health.TemplateHealthCheck;
 import fastcatch.api.resources.*;
@@ -21,6 +22,8 @@ import org.skife.jdbi.v2.DBI;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 import javax.servlet.FilterRegistration.Dynamic;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.EnumSet;
 
 
