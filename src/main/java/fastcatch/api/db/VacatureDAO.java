@@ -73,6 +73,7 @@ public interface VacatureDAO {
             "AND gebruiker_expertise.expertiseexpertiseType = expertise_vacature.expertiseexpertiseType " +
             "AND expertise_vacature.vacatureid = vacature.id " +
             "AND branche_vacature.vacatureId = vacature.id " +
+            "AND gebruiker_branche.gebruikerID = gebruiker_expertise.gebruikerID " +
             "AND gebruiker_branche.gebruikerID = :gebruikerID")
     List<Vacature> getVacaturesGebruiker(@Bind("gebruikerID") int gebruikerID);
 
