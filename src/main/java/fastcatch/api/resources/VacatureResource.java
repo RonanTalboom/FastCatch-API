@@ -29,6 +29,15 @@ public class VacatureResource {
     public Collection<Vacature> getVacatures() { return vacatureDAO.getVacatures(); }
 
     /**
+     * Request waarmee admins alle niet actieve vacatures op kunnen halen.
+     * @return vacaturelijst
+     */
+    @GET
+    @Path("/archief")
+    @RolesAllowed("ADMIN")
+    public Collection<Vacature> getArchiefVacatures() { return vacatureDAO.getArchiefVacatures(); }
+
+    /**
      * Request waarmee een gebruiker alle vacatures die voor hem/haar
      * interessant zijn ophaalt.
      * @param id
@@ -69,9 +78,19 @@ public class VacatureResource {
      * @param id
      */
     @DELETE
-    @Path("/{id}/archief")
+    @Path("/archief/{id}")
     @RolesAllowed("ADMIN")
     public void delete(@PathParam("id") int id) { vacatureDAO.delete(id); }
+
+    /**
+     * Request waarmee een admin een vacature met behulp van de
+     * bijbehorende id op non-actief kan zetten.
+     * @param id
+     */
+    @DELETE
+    @Path("/{id}")
+    @RolesAllowed("ADMIN")
+    public void activate(@PathParam("id") int id) { vacatureDAO.activate(id); }
 
 
     @GET
