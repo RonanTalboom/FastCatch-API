@@ -1,10 +1,11 @@
 package fastcatch.api.core;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
- * Created by Anna on 12-6-2017.
+ * In deze klasse worden alle gegevens opgeslagen van een vacature.
+ *
+ * @author Anna
  */
 public class Vacature implements Serializable {
 
@@ -15,20 +16,21 @@ public class Vacature implements Serializable {
     private String eigenaar;
     private String klant;
     private String locatie;
-    private Date startdatum;
-    private Date einddatum;
-    private Date publicatiedatum;
-    private Date uitersteAanbiedingsdatum;
+    private String startdatum;
+    private String einddatum;
+    private String publicatiedatum;
+    private String uitersteAanbiedingsdatum;
     private int uurPerWeek;
     private String aanvrager;
     private String omschrijving;
     private String samenvatting;
     private int actief;
 
-    public Vacature(String titel, String rol, String werkNiveau, String eigenaar, String klant,
-                    String locatie, Date startdatum, Date einddatum,
-                    Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek,
+    public Vacature(int id, String titel, String rol, String werkNiveau, String eigenaar, String klant,
+                    String locatie, String startdatum, String einddatum,
+                    String publicatiedatum, String uitersteAanbiedingsdatum, int uurPerWeek,
                     String aanvrager, String omschrijving, String samenvatting, int actief) {
+        this.id = id;
         this.titel = titel;
         this.rol = rol;
         this.werkNiveau = werkNiveau;
@@ -53,7 +55,6 @@ public class Vacature implements Serializable {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-
     public String getTitel() { return titel; }
     public void setTitel(String titel) { this.titel = titel; }
 
@@ -72,17 +73,17 @@ public class Vacature implements Serializable {
     public String getLocatie() { return locatie; }
     public void setLocatie(String locatie) { this.locatie = locatie; }
 
-    public Date getStartdatum() { return startdatum; }
-    public void setStartdatum(Date startdatum) { this.startdatum = startdatum; }
+    public String getStartdatum() { return startdatum; }
+    public void setStartdatum(String startdatum) { this.startdatum = startdatum; }
 
-    public Date getEinddatum() { return einddatum; }
-    public void setEinddatum(Date einddatum) { this.einddatum = einddatum; }
+    public String getEinddatum() { return einddatum; }
+    public void setEinddatum(String einddatum) { this.einddatum = einddatum; }
 
-    public Date getPublicatiedatum() { return publicatiedatum; }
-    public void setPublicatiedatum(Date publicatiedatum) { this.publicatiedatum = publicatiedatum; }
+    public String getPublicatiedatum() { return publicatiedatum; }
+    public void setPublicatiedatum(String publicatiedatum) { this.publicatiedatum = publicatiedatum; }
 
-    public Date getUitersteAanbiedingsdatum() { return uitersteAanbiedingsdatum; }
-    public void setUitersteAanbiedingsdatum(Date uitersteAanbiedingsdatum) { this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum; }
+    public String getUitersteAanbiedingsdatum() { return uitersteAanbiedingsdatum; }
+    public void setUitersteAanbiedingsdatum(String uitersteAanbiedingsdatum) { this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum; }
 
     public int getUurPerWeek() { return uurPerWeek; }
     public void setUurPerWeek(int uurPerWeek) { this.uurPerWeek = uurPerWeek; }
