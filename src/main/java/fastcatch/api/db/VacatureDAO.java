@@ -66,4 +66,14 @@ public interface VacatureDAO {
      */
     @SqlUpdate("update vacature set actief = 0 where id = :id")
     void delete(@Bind("id") int id);
+
+    @SqlQuery("select vacature.* from vacature,branche_vacature," +
+            "gebruiker_branche,gebruiker_expertise,expertise_vacature " +
+            "WHERE gebruiker_branche.branchebrancheType = branche_vacature.branchType " +
+            "AND gebruiker_expertise.expertiseexpertiseType = expertise_vacature.expertiseexpertiseType " +
+            "AND expertise_vacature.vacatureid = vacature.id " +
+            "AND branche_vacature.vacatureId = vacature.id " +
+            "AND gebruiker_branche.gebruikerID = :gebruikerID")
+    List<Vacature> getVacaturesGebruiker(@Bind("gebruikerID") int gebruikerID);
+
 }

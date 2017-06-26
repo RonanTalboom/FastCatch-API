@@ -73,4 +73,11 @@ public class VacatureResource {
     @RolesAllowed("ADMIN")
     public void delete(@PathParam("id") int id) { vacatureDAO.delete(id); }
 
+
+    @GET
+    @Path("/match/{id}")
+    @RolesAllowed("GEBRUIKER")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Collection<Vacature> getVacaturesGebruiker(@PathParam("id") int id) { return vacatureDAO.getVacaturesGebruiker(id); }
+
 }

@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class Vacature implements Serializable {
 
     private int id;
-    private String brancheType;
     private String titel;
     private String rol;
     private String werkNiveau;
@@ -27,12 +26,11 @@ public class Vacature implements Serializable {
     private String samenvatting;
     private int actief;
 
-    public Vacature(int id, String brancheType, String titel, String rol, String werkNiveau, String eigenaar, String klant,
+    public Vacature(int id, String titel, String rol, String werkNiveau, String eigenaar, String klant,
                     String locatie, String startdatum, String einddatum,
                     String publicatiedatum, String uitersteAanbiedingsdatum, int uurPerWeek,
                     String aanvrager, String omschrijving, String samenvatting, int actief) {
         this.id = id;
-        this.brancheType = brancheType;
         this.titel = titel;
         this.rol = rol;
         this.werkNiveau = werkNiveau;
@@ -56,9 +54,6 @@ public class Vacature implements Serializable {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-
-    public String getBrancheType() { return brancheType; }
-    public void setBrancheType(String brancheType) { this.brancheType = brancheType; }
 
     public String getTitel() { return titel; }
     public void setTitel(String titel) { this.titel = titel; }
