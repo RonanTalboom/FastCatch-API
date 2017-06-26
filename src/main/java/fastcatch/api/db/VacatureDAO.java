@@ -53,9 +53,9 @@ public interface VacatureDAO {
      * Voegt een nieuwe vacature toe in de tabel.
      * @param vacature
      */
-    @SqlUpdate("insert into vacature (BranchebrancheType, titel, rol, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
+    @SqlUpdate("insert into vacature (titel, rol, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
             "uitersteAanbiedingsdatum, uurPerWeek, aanvrager, omschrijving, samenvatting, actief)" +
-            "values (:brancheType, :titel, :rol, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
+            "values (:titel, :rol, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
             ":uitersteAanbiedingsdatum, :uurPerWeek, :aanvrager, :omschrijving, :samenvatting, :actief)")
     void insert(@BindBean Vacature vacature);
 
@@ -67,13 +67,15 @@ public interface VacatureDAO {
     @SqlUpdate("update vacature set actief = 0 where id = :id")
     void delete(@Bind("id") int id);
 
-    @SqlQuery("select vacature.* from vacature,branche_vacature," +
+    @SqlQuery("SELECT vacature.* FROM vacature,branche_vacature, " +
             "gebruiker_branche,gebruiker_expertise,expertise_vacature " +
-            "WHERE gebruiker_branche.branchebrancheType = branche_vacature.branchType " +
-            "AND gebruiker_expertise.expertiseexpertiseType = expertise_vacature.expertiseexpertiseType " +
+            "WHERE gebruiker_branche.brancheType = branche_vacature.branchType " +
+            "AND gebruiker_expertise.expertiseType = expertise_vacature.expertiseType " +
+            "AND gebruiker_branche.gebruikerID = gebruiker_expertise.gebruikerID " +
             "AND expertise_vacature.vacatureid = vacature.id " +
             "AND branche_vacature.vacatureId = vacature.id " +
-            "AND gebruiker_branche.gebruikerID = :gebruikerID")
+            "AND gebruiker_branche.gebruikerID = 1 " +
+            "AND vacature.actief = 1")
     List<Vacature> getVacaturesGebruiker(@Bind("gebruikerID") int gebruikerID);
 
 }
