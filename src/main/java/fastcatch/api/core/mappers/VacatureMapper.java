@@ -24,8 +24,8 @@ public class VacatureMapper implements ResultSetMapper<Vacature> {
     public Vacature map(int index, ResultSet r, StatementContext ctx) throws SQLException
     {
         return new Vacature(r.getInt("id"), r.getString("titel"), r.getString("rol"), r.getString("werkNiveau"),
-                r.getString("eigenaar"), r.getString("klant"), r.getString("locatie"), r.getString("startdatum"),
-                r.getString("einddatum"), r.getString("publicatiedatum"), r.getString("uitersteAanbiedingsdatum"),
+                r.getString("eigenaar"), r.getString("klant"), r.getString("locatie"), r.getDate("startdatum"),
+                r.getDate("einddatum"), r.getDate("publicatiedatum"), r.getDate("uitersteAanbiedingsdatum"),
                 r.getInt("uurPerWeek"), r.getString("aanvrager"), r.getString("omschrijving"), r.getString("samenvatting"), r.getInt("actief"));
     }
 

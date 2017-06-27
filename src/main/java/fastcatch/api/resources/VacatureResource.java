@@ -80,6 +80,11 @@ public class VacatureResource {
     @DELETE
     @Path("/archief/{id}")
     @RolesAllowed("ADMIN")
+    public void archiveer(@PathParam("id") int id) { vacatureDAO.archiveer(id); }
+
+    @DELETE
+    @Path("/verwijder/{id}")
+    @RolesAllowed("ADMIN")
     public void delete(@PathParam("id") int id) { vacatureDAO.delete(id); }
 
     /**

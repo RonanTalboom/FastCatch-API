@@ -27,6 +27,13 @@ public interface VacatureDAO {
     List<Vacature> getVacatures();
 
     /**
+     * Haalt alle vacatures uit de database op die niet actief zijn.
+     * @return vacaturelijst
+     */
+    @SqlQuery("select * from vacature where actief = 0")
+    List<Vacature> getArchiefVacatures();
+
+    /**
      * Haalt alle vacatures uit de database op die interessant voor de
      * huidige gebruiker zijn en actief zijn.
      * @param gebruikerID
@@ -65,9 +72,25 @@ public interface VacatureDAO {
      * @param id
      */
     @SqlUpdate("update vacature set actief = 0 where id = :id")
+    void archiveer(@Bind("id") int id);
+
+    /**
+     * Zet de vacature met de id die overeenkomt met de meegegeven
+     * id op non-actief.
+     * @param id
+     */
+    @SqlUpdate("delete from vacature where id = :id")
     void delete(@Bind("id") int id);
 
-    @SqlQuery("SELECT vacature.* FROM vacature,branche_vacature, " +
+    /**
+     * Zet de vacature met de id die overeenkomt met de meegegeven
+     * id op actief.
+     * @param id
+     */
+    @SqlUpdate("update vacature set actief = 1 where id = :id")
+    void activate(@Bind("id") int id);
+
+    @SqlQuery("select vacature.* from vacature,branche_vacature," +
             "gebruiker_branche,gebruiker_expertise,expertise_vacature " +
             "WHERE gebruiker_branche.brancheType = branche_vacature.branchType " +
             "AND gebruiker_expertise.expertiseType = expertise_vacature.expertiseType " +
