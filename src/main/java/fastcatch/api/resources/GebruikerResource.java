@@ -16,19 +16,28 @@ import java.util.Collection;
 public class GebruikerResource {
     private final GebruikerDAO gebruikerDAO;
 
-    public GebruikerResource(GebruikerDAO dao) { this.gebruikerDAO = dao; }
+    public GebruikerResource(GebruikerDAO dao) {
+        this.gebruikerDAO = dao;
+    }
 
     @GET
-    public Collection<Gebruiker> getProfielen() { return gebruikerDAO.getProfielen(); }
+    public Collection<Gebruiker> getProfielen() {
+        return gebruikerDAO.getProfielen();
+    }
 
     @GET
     @Path("/{id}")
-    @RolesAllowed("ADMIN")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Gebruiker getProfiel(@PathParam("id") int id) { return gebruikerDAO.getProfiel(id); }
+    @RolesAllowed("GEBRUIKER")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Gebruiker getProfiel(@PathParam("id") int id) {
+        return gebruikerDAO.getProfiel(id);
+    }
 
-//    @PUT
-//    @Path("/{profiel}")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public void wijzigWachtwoord(Gebruiker gebruiker) { gebruikerDAO.wijzigWachtwoord(gebruiker.getWachtwoord(), gebruiker.getEmailAdres());}
+    @PUT
+    @RolesAllowed("GEBRUIKER")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateProfiel(Gebruiker gebruiker) {
+        gebruikerDAO.updateGebruiker(gebruiker);
+    }
+
 }

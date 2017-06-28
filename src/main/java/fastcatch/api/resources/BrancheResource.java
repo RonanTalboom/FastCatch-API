@@ -23,11 +23,34 @@ public class BrancheResource {
     @RolesAllowed("GEBRUIKER")
     public Collection<Branche> getBranches() { return brancheDAO.getBranches(); }
 
+    @GET
+    @RolesAllowed("GEBRUIKER")
+    @Path("/gebruiker/{id}")
+    public Collection<Branche> getGebruikerBranches(@PathParam("id") int id) {
+        return brancheDAO.getGebruikerBranches(id);
+    }
+
+    @POST
+    @RolesAllowed("GEBRUIKER")
+    @Path("/delete/gebruiker/{id}/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void deleteExpertiseGebruiker(@PathParam("id") int id, Collection<Branche> branches) {
+        for (Branche branche : branches) {
+            brancheDAO.deleteGebruikerBranche(branche, id);
+        }
+        ;
+    }
+
     @POST
     @RolesAllowed("GEBRUIKER")
     @Path("/gebruiker/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertBrancheGebruiker(@PathParam("id") int id, Branche branche) {
-        brancheDAO.insertBrancheGebruiker(branche.getBrancheType(), id );
+    public void insertBrancheGebruiker(@PathParam("id") int id, Collection<Branche> branches) {
+        Collection<Branche> brancheCollection = brancheDAO.getGebruikerBranches(id);
+
+        for (Branche branche : branches) {
+            if (!brancheCollection.contains(branche))
+                brancheDAO.insertBrancheGebruiker(branche, id);
+        }
     }
 }
