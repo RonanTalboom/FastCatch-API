@@ -1,5 +1,7 @@
 package fastcatch.api.core;
 
+import java.util.Objects;
+
 /**
  * Created by ronantalboom on 13/06/2017.
  */
@@ -17,7 +19,16 @@ public class Branche {
         return brancheType;
     }
 
-    public void setBrancheType(String BrancheType) {
-        this.brancheType = brancheType;
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Branche)) {
+            return false;
+        }
+        return Objects.equals(((Branche) obj).getBrancheType(), this.getBrancheType());
+
     }
 }
