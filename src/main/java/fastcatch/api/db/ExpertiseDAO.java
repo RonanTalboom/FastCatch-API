@@ -32,4 +32,7 @@ public interface ExpertiseDAO {
 
     @SqlUpdate("DELETE FROM gebruiker_expertise WHERE gebruikerID = :gebruikerID AND expertiseType = :expertiseType")
     void deleteGebruikerExpertise(@BindBean Expertise expertise, @Bind("gebruikerID") int gebruikerID);
+
+    @SqlQuery("SELECT expertiseType FROM expertise_vacature WHERE vacatureid = :vacatureID")
+    List<Expertise> getVacatureExpertises(@Bind("vacatureID") int vacatureID);
 }

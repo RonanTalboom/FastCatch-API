@@ -103,7 +103,6 @@ public class FastCatchApplication extends Application<FastCatchConfiguration> {
     }
 
     public void setUpResources(Environment environment, DBI jdbi) {
-        final UserDAO udao = jdbi.onDemand(UserDAO.class);
         final GebruikerDAO gdao = jdbi.onDemand(GebruikerDAO.class);
         final VacatureDAO vdao = jdbi.onDemand(VacatureDAO.class);
         final ExpertiseDAO edao = jdbi.onDemand(ExpertiseDAO.class);

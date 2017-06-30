@@ -64,5 +64,12 @@ public class ExpertiseResource {
     public void insertExpertiseVacature(@PathParam("id") int id, Expertise expertise) {
 
     }
+    @GET
+    @RolesAllowed("GEBRUIKER")
+    @Path("/vacature/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Collection<Expertise> getExpertiseVacature(@PathParam("id") int id) {
+        return expertiseDAO.getVacatureExpertises(id);
 
+    }
 }

@@ -20,6 +20,7 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 public class VacatureResource {
     private final VacatureDAO vacatureDAO;
+    private Collection<Vacature> vacature;
 
     public VacatureResource(VacatureDAO dao) { this.vacatureDAO = dao; }
 
@@ -112,6 +113,9 @@ public class VacatureResource {
     @Path("/match/{id}")
     @RolesAllowed("GEBRUIKER")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Collection<Vacature> getVacaturesGebruiker(@PathParam("id") int id) { return vacatureDAO.getVacaturesGebruiker(id); }
+    public Collection<Vacature> getVacaturesGebruiker(@PathParam("id") int id) {
+            vacature = vacatureDAO.getVacaturesGebruiker(id);
+            return vacature;
+    }
 
 }

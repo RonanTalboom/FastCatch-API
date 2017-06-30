@@ -109,6 +109,8 @@ public interface VacatureDAO {
     @SqlUpdate("update vacature set actief = 1 where id = :id")
     void activate(@Bind("id") int id);
 
+
+    @RegisterMapper(VacatureMapper.class)
     @SqlQuery("select vacature.* from vacature,branche_vacature," +
             "gebruiker_branche,gebruiker_expertise,expertise_vacature " +
             "WHERE gebruiker_branche.brancheType = branche_vacature.branchType " +
@@ -116,7 +118,7 @@ public interface VacatureDAO {
             "AND gebruiker_branche.gebruikerID = gebruiker_expertise.gebruikerID " +
             "AND expertise_vacature.vacatureid = vacature.id " +
             "AND branche_vacature.vacatureId = vacature.id " +
-            "AND gebruiker_branche.gebruikerID = 1 " +
+            "AND gebruiker_branche.gebruikerID = :gebruikerID " +
             "AND vacature.actief = 1")
     List<Vacature> getVacaturesGebruiker(@Bind("gebruikerID") int gebruikerID);
 
