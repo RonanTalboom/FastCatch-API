@@ -1,7 +1,10 @@
 package fastcatch.api.resources;
 
+import fastcatch.api.core.Expertise;
 import fastcatch.api.core.Vacature;
+import fastcatch.api.core.mappers.VacatureMapperExtra;
 import fastcatch.api.db.VacatureDAO;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
@@ -68,8 +71,16 @@ public class VacatureResource {
     @POST
     @RolesAllowed("ADMIN")
     @Consumes(MediaType.APPLICATION_JSON)
+    @RegisterMapper(VacatureMapperExtra.class)
     public void insert(Vacature vacature) {
         vacatureDAO.insert(vacature);
+        int id = vacatureDAO.getID();
+
+        vacatureDAO.insertBranche(id, vacature.getBranchType());
+
+        for(Expertise e : vacature.getExpertiseType()) {
+            vacatureDAO.insertExpertise(id, e.getExpertiseType());
+        }
     }
 
     /**

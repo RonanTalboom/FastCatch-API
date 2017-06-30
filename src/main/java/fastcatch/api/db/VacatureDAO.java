@@ -2,6 +2,7 @@ package fastcatch.api.db;
 
 import fastcatch.api.core.Vacature;
 import fastcatch.api.core.mappers.VacatureMapper;
+import fastcatch.api.core.mappers.VacatureMapperExtra;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -23,14 +24,22 @@ public interface VacatureDAO {
      * Haalt alle vacatures uit de database op die actief zijn.
      * @return vacaturelijst
      */
-    @SqlQuery("select * from vacature where actief = 1")
+    @SqlQuery("select vacature.id, vacature.titel, vacature.rol, vacature.werkNiveau, vacature.eigenaar, vacature.klant, vacature.locatie, vacature.startdatum, vacature.einddatum, vacature.publicatiedatum, vacature.uitersteAanbiedingsdatum, vacature.uurPerWeek, vacature.aanvrager, vacature.omschrijving, vacature.samenvatting, vacature.actief, branche_vacature.branchType, expertise_vacature.expertiseType \n" +
+            "from vacature\n" +
+            "LEFT JOIN branche_vacature ON vacature.id = branche_vacature.vacatureID\n" +
+            "LEFT JOIN expertise_vacature ON vacature.id = expertise_vacature.vacatureID\n" +
+            "WHERE vacature.actief = 1;")
     List<Vacature> getVacatures();
 
     /**
      * Haalt alle vacatures uit de database op die niet actief zijn.
      * @return vacaturelijst
      */
-    @SqlQuery("select * from vacature where actief = 0")
+    @SqlQuery("select vacature.id, vacature.titel, vacature.rol, vacature.werkNiveau, vacature.eigenaar, vacature.klant, vacature.locatie, vacature.startdatum, vacature.einddatum, vacature.publicatiedatum, vacature.uitersteAanbiedingsdatum, vacature.uurPerWeek, vacature.aanvrager, vacature.omschrijving, vacature.samenvatting, vacature.actief, branche_vacature.branchType, expertise_vacature.expertiseType \n" +
+            "from vacature\n" +
+            "LEFT JOIN branche_vacature ON vacature.id = branche_vacature.vacatureID\n" +
+            "LEFT JOIN expertise_vacature ON vacature.id = expertise_vacature.vacatureID\n" +
+            "WHERE vacature.actief = 0;")
     List<Vacature> getArchiefVacatures();
 
     /**
@@ -60,11 +69,29 @@ public interface VacatureDAO {
      * Voegt een nieuwe vacature toe in de tabel.
      * @param vacature
      */
+    @RegisterMapper(VacatureMapperExtra.class)
     @SqlUpdate("insert into vacature (titel, rol, werkNiveau, eigenaar, klant, locatie, startdatum, einddatum, publicatiedatum, " +
             "uitersteAanbiedingsdatum, uurPerWeek, aanvrager, omschrijving, samenvatting, actief)" +
             "values (:titel, :rol, :werkNiveau, :eigenaar, :klant, :locatie, :startdatum, :einddatum, :publicatiedatum," +
             ":uitersteAanbiedingsdatum, :uurPerWeek, :aanvrager, :omschrijving, :samenvatting, :actief)")
     void insert(@BindBean Vacature vacature);
+
+    /**
+     * Voegt een nieuwe vacature toe in de tabel.
+     * @param id
+     */
+    @RegisterMapper(VacatureMapperExtra.class)
+    @SqlUpdate("INSERT INTO branche_vacature(branchType, vacatureid)" +
+            "VALUES (':branchType', :id)")
+    void insertBranche(@Bind("id") int id, @Bind("branchType") String brancheType);
+
+    @RegisterMapper(VacatureMapperExtra.class)
+    @SqlUpdate("INSERT INTO expertise_vacature(expertiseType,vacatureid)" +
+            "VALUES (':expertiseType', :id)")
+    void insertExpertise(@Bind("id") int id, @Bind("expertiseType") String expertiseType);
+
+    @SqlQuery("SELECT @@IDENTITY")
+    int getID();
 
     /**
      * Zet de vacature met de id die overeenkomt met de meegegeven

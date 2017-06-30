@@ -1,12 +1,15 @@
 package fastcatch.api.core;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * In deze klasse worden alle gegevens opgeslagen van een vacature.
  *
- * @author Anna
+ * @author Luc
  */
 public class Vacature implements Serializable {
 
@@ -27,10 +30,11 @@ public class Vacature implements Serializable {
     private String samenvatting;
     private int actief;
 
-    public Vacature(int id, String titel, String rol, String werkNiveau, String eigenaar, String klant,
-                    String locatie, Date startdatum, Date einddatum,
-                    Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek,
-                    String aanvrager, String omschrijving, String samenvatting, int actief) {
+
+    private String branchType;
+    private List<Expertise> expertiseType;
+
+    public Vacature(int id, String titel, String rol, String werkNiveau, String eigenaar, String klant, String locatie, Date startdatum, Date einddatum, Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek, String aanvrager, String omschrijving, String samenvatting, int actief) {
         this.id = id;
         this.titel = titel;
         this.rol = rol;
@@ -49,10 +53,48 @@ public class Vacature implements Serializable {
         this.actief = actief;
     }
 
-    public Vacature(String titel, String rol, String werkNiveau, String eigenaar, String klant,
-                    String locatie, Date startdatum, Date einddatum,
-                    Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek,
-                    String aanvrager, String omschrijving, String samenvatting, int actief) {
+    public Vacature(int id, String titel, String rol, String werkNiveau, String eigenaar, String klant, String locatie, Date startdatum, Date einddatum, Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek, String aanvrager, String omschrijving, String samenvatting, int actief, String branchType, List<Expertise> expertiseType) {
+        this.id = id;
+        this.titel = titel;
+        this.rol = rol;
+        this.werkNiveau = werkNiveau;
+        this.eigenaar = eigenaar;
+        this.klant = klant;
+        this.locatie = locatie;
+        this.startdatum = startdatum;
+        this.einddatum = einddatum;
+        this.publicatiedatum = publicatiedatum;
+        this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
+        this.uurPerWeek = uurPerWeek;
+        this.aanvrager = aanvrager;
+        this.omschrijving = omschrijving;
+        this.samenvatting = samenvatting;
+        this.actief = actief;
+        this.branchType = branchType;
+        this.expertiseType = expertiseType;
+    }
+
+    public Vacature(String titel, String rol, String werkNiveau, String eigenaar, String klant, String locatie, Date startdatum, Date einddatum, Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek, String aanvrager, String omschrijving, String samenvatting, int actief, String branchType, List<Expertise> expertiseType) {
+        this.titel = titel;
+        this.rol = rol;
+        this.werkNiveau = werkNiveau;
+        this.eigenaar = eigenaar;
+        this.klant = klant;
+        this.locatie = locatie;
+        this.startdatum = startdatum;
+        this.einddatum = einddatum;
+        this.publicatiedatum = publicatiedatum;
+        this.uitersteAanbiedingsdatum = uitersteAanbiedingsdatum;
+        this.uurPerWeek = uurPerWeek;
+        this.aanvrager = aanvrager;
+        this.omschrijving = omschrijving;
+        this.samenvatting = samenvatting;
+        this.actief = actief;
+        this.branchType = branchType;
+        this.expertiseType = expertiseType;
+    }
+
+    public Vacature(String titel, String rol, String werkNiveau, String eigenaar, String klant, String locatie, Date startdatum, Date einddatum, Date publicatiedatum, Date uitersteAanbiedingsdatum, int uurPerWeek, String aanvrager, String omschrijving, String samenvatting, int actief) {
         this.titel = titel;
         this.rol = rol;
         this.werkNiveau = werkNiveau;
@@ -70,9 +112,21 @@ public class Vacature implements Serializable {
         this.actief = actief;
     }
 
+    public List<Expertise> getExpertiseType() {
+        return expertiseType;
+    }
+
+    public void setExpertiseType(List<Expertise> expertiseType) {
+        this.expertiseType = expertiseType;
+    }
+
     public Vacature() {
 
     }
+
+    public String getBranchType() { return branchType; }
+    public void setBranchType(String branchType) { this.branchType = branchType; }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
