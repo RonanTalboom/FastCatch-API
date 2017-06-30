@@ -10,7 +10,6 @@ import java.util.Objects;
 public class Expertise {
 
     private String expertiseType;
-    private List<Expertise> expertises;
 
     public Expertise(String expertiseType) {
         this.expertiseType = expertiseType;
