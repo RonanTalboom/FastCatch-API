@@ -75,7 +75,6 @@ public class VacatureResource {
     public void insert(Vacature vacature) {
         vacatureDAO.insert(vacature);
         int id = vacatureDAO.getID();
-
         vacatureDAO.insertBranche(id, vacature.getBranchType());
 
         for(Expertise e : vacature.getExpertiseType()) {
