@@ -111,7 +111,7 @@ public interface VacatureDAO {
 
 
     @RegisterMapper(VacatureMapper.class)
-    @SqlQuery("select vacature.* from vacature,branche_vacature," +
+    @SqlQuery("select DISTINCT vacature.* from vacature,branche_vacature," +
             "gebruiker_branche,gebruiker_expertise,expertise_vacature " +
             "WHERE gebruiker_branche.brancheType = branche_vacature.branchType " +
             "AND gebruiker_expertise.expertiseType = expertise_vacature.expertiseType " +
